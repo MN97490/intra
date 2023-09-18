@@ -1,3 +1,4 @@
+
 body {
     background-color: #092d74;
 
@@ -7,6 +8,31 @@ body {
     text-align: center;
  }
  
+.bodyConnect {
+   background-color: #092d74;
+   margin: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+}
+.logoCegepConnect{
+   width: 300px;
+
+   max-width: 35%;
+
+}
+
+.footer {
+   background-color: gray; /* Couleur de fond gris */
+   padding: 10px; /* Espace intérieur autour du texte */
+   text-align: center; /* Centre le texte horizontalement */
+   color: white; /* Couleur du texte */
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+}
  .formulaireCo {
     border: 1px solid white;
     width: 300px;
