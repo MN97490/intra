@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 18 Septembre 2023 à 16:46
+-- Généré le :  Lun 18 Septembre 2023 à 18:31
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
 
@@ -19,6 +19,27 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `intra`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `evenement`
+--
+
+CREATE TABLE `evenement` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(120) CHARACTER SET utf16 NOT NULL,
+  `date` date NOT NULL,
+  `departement` varchar(120) CHARACTER SET utf16 NOT NULL,
+  `heureuxEleve` int(11) NOT NULL,
+  `moyenHeureuxEleve` int(11) NOT NULL,
+  `pasHeureuxEleve` int(11) NOT NULL,
+  `heureuxEntreprise` int(11) NOT NULL,
+  `moyenHeureuxEntreprise` int(11) NOT NULL,
+  `pasHeureuxEntreprise` int(11) NOT NULL,
+  `lieu` varchar(250) CHARACTER SET utf16 NOT NULL,
+  `Heure` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -44,6 +65,12 @@ INSERT INTO `usager` (`id`, `user`, `password`) VALUES
 --
 
 --
+-- Index pour la table `evenement`
+--
+ALTER TABLE `evenement`
+  ADD UNIQUE KEY `id` (`id`);
+
+--
 -- Index pour la table `usager`
 --
 ALTER TABLE `usager`
@@ -54,6 +81,11 @@ ALTER TABLE `usager`
 -- AUTO_INCREMENT pour les tables exportées
 --
 
+--
+-- AUTO_INCREMENT pour la table `evenement`
+--
+ALTER TABLE `evenement`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `usager`
 --
