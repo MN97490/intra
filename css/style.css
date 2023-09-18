@@ -1,0 +1,20 @@
+body {
+    background-color: #092d74;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+ }
+ 
+ .centering {
+    text-align: center;
+ }
+ 
+ .formulaireCo {
+    border: 1px solid white;
+    width: 300px;
+    max-width: 80%; /* Ajustez la largeur comme vous le souhaitez */
+    padding: 20px; /* Ajoutez de l'espace intérieur pour une meilleure apparence */
+   text-align: center;
+ }
