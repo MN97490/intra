@@ -18,3 +18,44 @@ body {
     padding: 20px; /* Ajoutez de l'espace intérieur pour une meilleure apparence */
    text-align: center;
  }
+a{
+   margin: auto;
+   width: 200px;
+   border: 3px solid #73AD21;
+   padding: 10px;
+   background-color: #092d74;
+   color: darkred;
+}
+.buttonjay{
+   background-color: #740909;
+   margin-top: 200px;
+   align-items: center;
+   padding: 100px;
+   width: 33%;
+   border: 5px solid black;
+}
+
+.bienvenue{
+display: flex;
+background-color: grey;
+text-align: center;
+justify-content: center;
+height: 80px;
+}
+.good{
+   
+   background-color: green;
+   font-weight: bolder;
+   font-size:xx-large;
+}
+.mid{
+
+   background-color: yellow;
+   font-weight: bolder;
+   font-size:xx-large;
+}
+.bad{
+   background-color: red;
+   font-weight: bolder;
+   font-size:xx-large;
+}
