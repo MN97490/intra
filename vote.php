@@ -10,11 +10,12 @@
 <link rel="stylesheet"  href="css/style.css">
     <title>vote eleve</title>
 </head>
-<body>
+<body class="bodyvote">
+    <div name ="divvote">
     <button class="good">( ° ͜ʖ °)</button>
     <button class="mid">¯\_(ツ)_/¯</button>
     <button class="bad">( ͡° ʖ̯ ͡°)</button>
-
+</div>
 
 </body>
 </html>

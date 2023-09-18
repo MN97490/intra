@@ -1,10 +1,6 @@
 body {
     background-color: #092d74;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+
  }
  
  .centering {
@@ -18,16 +14,16 @@ body {
     padding: 20px; /* Ajoutez de l'espace intérieur pour une meilleure apparence */
    text-align: center;
  }
-a{
+.LienIndex{
    margin: auto;
    width: 200px;
    border: 3px solid #73AD21;
    padding: 10px;
    background-color: #092d74;
-   color: darkred;
+   color: white;
 }
-.buttonjay{
-   background-color: #740909;
+.BtnIndex{
+   background-color: whitesmoke;
    margin-top: 200px;
    align-items: center;
    padding: 100px;
@@ -37,25 +33,54 @@ a{
 
 .bienvenue{
 display: flex;
-background-color: grey;
+background-color: lightgray;
 text-align: center;
 justify-content: center;
 height: 80px;
+font-weight: bolder;
 }
 .good{
-   
+   padding: 10%;
+   justify-self: center;
    background-color: green;
    font-weight: bolder;
    font-size:xx-large;
 }
 .mid{
-
+   padding: 10%;
    background-color: yellow;
    font-weight: bolder;
    font-size:xx-large;
 }
 .bad{
+   padding: 10%;
    background-color: red;
    font-weight: bolder;
    font-size:xx-large;
+}
+.CreerEvent{
+   padding: 1%;
+   color: #092d74;
+   font-weight: bolder;
+}
+.divvote{
+padding: 100px;
+position: fixed;
+top: 50%;
+}
+.formcreation{
+   padding: 10px;
+   margin: auto;
+   color: aliceblue;
+   width: 300px;
+   max-width: 20%;
+   border: 3px solid aliceblue;
+   position: fixed;
+   right: 40%;
+   top: 30%;
+
+}
+.bodyvote{
+   align-items: center;
+   justify-items: center;
 }

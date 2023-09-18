@@ -12,9 +12,9 @@
 </head>
 <body>
     <h1 class="bienvenue">bienvenue sur la page index</h1>
-<button class="boutonjay"><a href="creation.php">creation.php</a></button>
-<button class="boutonjay"><a href="stat.php">stat.php</a></button>
-<button class="boutonjay"><a href="vote.php">vote.php</a></button>
+<button class="BtnIndex"><a href="creation.php" class="LienIndex">creation.php</a></button>
+<button class="BtnIndex"><a href="stat.php" class="LienIndex">stat.php</a></button>
+<button class="BtnIndex"><a href="vote.php" class="LienIndex">vote.php</a></button>
 
 
 
