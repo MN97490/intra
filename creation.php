@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +14,20 @@
     <title>creation</title>
 </head>
 <body class="bodycreation">
+
+<?php
+// Set session variables
+if ($_SESSION["connexion"] == true) {
+
+    echo "La connexion est réussie";
+ } else {
+    echo "La connexion n'est pas établie";
+    header('Location: http://localhost/intra/connect.php');
+    session_destroy();
+
+ }
+  
+?>
 <form class="formcreation">
     <label>nom de l'evenement:</label>
     <input type="text" id="nomevent" name="nomevent"><br>

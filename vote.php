@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,16 +14,18 @@
     <title>vote eleve</title>
 </head>
     <body class="bodyvote">
-        <?php
-        $servername="localhost";
-        $usernameDB = "root";
-        $passwordDB ="root";
-        $dbname = "intra"
+    <?php
+// Set session variables
+if ($_SESSION["connexion"] == true) {
 
-        $conn = new mysqli_connect($servername,$usernameDB,$passwordDB,$dbname);
-        if(!$conn){
-            die("connection echouee: ".mysqli_connect_error());
-        }
+    echo "La connexion est réussie";
+ } else {
+    echo "La connexion n'est pas établie";
+    header('Location: http://localhost/intra/connect.php');
+    session_destroy();
+
+ }
+  
 ?>
 
         <form action="" method="get">
