@@ -10,12 +10,25 @@
 <link rel="stylesheet"  href="css/style.css">
     <title>vote eleve</title>
 </head>
-<body class="bodyvote">
-    <div name ="divvote">
-    <button class="good">( ° ͜ʖ °)</button>
-    <button class="mid">¯\_(ツ)_/¯</button>
-    <button class="bad">( ͡° ʖ̯ ͡°)</button>
-</div>
+    <body class="bodyvote">
+        <?php
+        $servername="localhost";
+        $usernameDB = "root";
+        $passwordDB ="root";
+        $dbname = "intra"
 
+        $conn = new mysqli_connect($servername,$usernameDB,$passwordDB,$dbname);
+        if(!$conn){
+            die("connection echouee: ".mysqli_connect_error());
+        }
+?>
+
+        <form action="" method="get">
+        <div name ="divvote">
+        <button class="good">( ° ͜ʖ °)</button>
+        <button class="mid">¯\_(ツ)_/¯</button>
+        <button class="bad">( ͡° ʖ̯ ͡°)</button>
+    </div>
+    </form>
 </body>
 </html>
