@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +15,19 @@
     <title>index</title>
 </head>
 <body>
+<?php
+// Set session variables
+
+if ($_SESSION["connexion"] == true) {
+    echo "La connexion est réussie";
+ } else {
+    echo "La connexion n'est pas établie";
+    header('Location: http://localhost/intra/connect.php');
+    session_destroy();
+ }
+
+
+?>
     <h1 class="bienvenue">bienvenue sur la page index</h1>
 <button class="BtnIndex"><a href="creation.php" class="LienIndex">creation.php</a></button>
 <button class="BtnIndex"><a href="stat.php" class="LienIndex">stat.php</a></button>

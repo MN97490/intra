@@ -13,13 +13,22 @@ session_start();
 
 <?php
 // Set session variables
-$_SESSION["connexion"] = true;
-echo "La connexion est réussie" . $_SESSION["connexion"];
 
-session_destroy();
-session_set_cookie_params(20);
-ini_set('session.use_only_cookies', 1);
+if ($_SESSION["connexion"] == true) {
+    echo "La connexion est réussie";
+ } else {
+    echo "La connexion n'est pas établie";
+    header('Location: http://localhost/intra/connect.php');
+    session_destroy();
+ }
+
+
 ?>
-    
+    <button  class=" btnIndexStat"><a href="index.php" class="LienIndexStat">index</a></button>
+   
+
+    <?php 
+        
+    ?>
 </body>
 </html>
