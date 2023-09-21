@@ -1,7 +1,12 @@
 <?php
-session_start();
+session_start( );
+
+
+
+
+
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -62,7 +67,7 @@ $conn->close();
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"method="post">
                 username: <input type="text" name="username" value = "" placeholder="username" ><br>
                 <p style="color:red;"></p>
-                password: <input type="text" name="password" value = "" placeholder="mot de passe"><br>
+                password: <input type="password" name="password" value = "" placeholder="mot de passe"><br>
                 <p style="color:red;"></p>
 
                 <input type="submit" value="Connexion" >
