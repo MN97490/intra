@@ -25,7 +25,7 @@ if ($_SESSION["connexion"] == true) {
 
 ?>
     <button  class=" btnIndexStat"><a href="index.php" class="LienIndexStat">index</a></button>
-   
+    <button class="btnDeconnexion " id="btnDeconnexion" name="btnDeconnexionStat"> <a href="deco.php" class="LienDecoStat">Deconnexion</a></button>
 
     <?php 
         
