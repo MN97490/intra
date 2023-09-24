@@ -19,10 +19,7 @@ body {
 .bodyStat {
    background-color: #092d74;
    margin: 0;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   min-height: 100vh;
+   
 }
 .logoCegepConnect{
    width: 300px;
@@ -32,10 +29,10 @@ body {
 }
 
 .footer {
-   background-color: gray; /* Couleur de fond gris */
-   padding: 10px; /* Espace intérieur autour du texte */
-   text-align: center; /* Centre le texte horizontalement */
-   color: white; /* Couleur du texte */
+   background-color: gray; 
+   padding: 10px; 
+   text-align: center; 
+   color: white; 
    position: fixed;
    left: 0;
    bottom: 0;
@@ -44,8 +41,8 @@ body {
  .formulaireCo {
     border: 1px solid white;
     width: 300px;
-    max-width: 80%; /* Ajustez la largeur comme vous le souhaitez */
-    padding: 20px; /* Ajoutez de l'espace intérieur pour une meilleure apparence */
+    max-width: 80%; 
+    padding: 20px; 
    text-align: center;
  }
 .LienIndex{
@@ -118,3 +115,47 @@ top: 50%;
    align-items: center;
    justify-items: center;
 }
+
+
+.table {
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 20px; 
+ 
+ 
+
+   background-color: #fff; 
+   
+ }
+ .table th {
+   background-color: #f2f2f2;
+   padding: 10px;
+   text-align: center;
+ }
+ 
+
+ .table td {
+   padding: 10px;
+   text-align: center;
+ }
+ 
+
+ .table button {
+   background-color: #ff0000;
+   color: #fff;
+   border: none;
+   padding: 5px 10px;
+   cursor: pointer;
+   font-weight: bold;
+ }
+ 
+
+ .LienIndexStat,
+ .LienDecoStat {
+   text-decoration: none;
+   color: #007bff;
+   font-weight: bold;
+ }
+ 
+
+ 
