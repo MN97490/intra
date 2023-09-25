@@ -12,17 +12,19 @@ session_start();
 </head>
 <body class="bodyStat">
 
+
 <?php
 // Set session variables
 
 if ($_SESSION["connexion"] == true) {
-    echo "La connexion est réussie";
+   
  
 
  } else {
     echo "La connexion n'est pas établie";
     header('Location: http://localhost/intra/connect.php');
     session_destroy();
+    session_unset();
  }
  
 
@@ -43,7 +45,7 @@ if ($_SESSION["connexion"] == true) {
 
 
  }
- echo "Connected successfully";
+ 
  $conn->query("SET NAMES utf8");
 
  $sql = "SELECT nom,date,departement,heureuxEleve,moyenHeureuxEleve,pasHeureuxEleve,heureuxEntreprise,moyenHeureuxEntreprise,pasHeureuxEntreprise,lieu,heure FROM evenement";
@@ -53,10 +55,10 @@ if ($_SESSION["connexion"] == true) {
      while($row=$result->fetch_assoc()){
          
          
-       //  echo "id:". $row["id"]. "- url ". $row["url"]."- Marque:". $row["marque"]."-Modele". $row["modele"]."- couleur".$row["couleur"]."<br>";
+       
          ?> 
-         
-           <table class="table" style="" >
+    
+           <table class="table " style="" >
 <thead>
  <tr >
    <th scope="col" >Nom </th>

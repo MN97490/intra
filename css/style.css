@@ -1,15 +1,11 @@
 
-body {
-    background-color: #092d74;
 
- }
  
  .centering {
     text-align: center;
  }
  
 .bodyConnect {
-   background-color: #092d74;
    margin: 0;
    display: flex;
    justify-content: center;
@@ -17,7 +13,7 @@ body {
    min-height: 100vh;
 }
 .bodyStat {
-   background-color: #092d74;
+   background-color: "#afe2ff";
    margin: 0;
    
 }
@@ -44,7 +40,11 @@ body {
     max-width: 80%; 
     padding: 20px; 
    text-align: center;
+   background-color: rgba(9, 45, 116, 0.7);
+   
  }
+
+
 .LienIndex{
    margin: auto;
    width: 200px;
@@ -128,7 +128,7 @@ top: 50%;
    
  }
  .table th {
-   background-color: #f2f2f2;
+   background-color: #d2eeff;
    padding: 10px;
    text-align: center;
  }
@@ -156,6 +156,17 @@ top: 50%;
    color: #007bff;
    font-weight: bold;
  }
- 
 
+
+
+
+ #background-video {
+   position: fixed; 
+   top: 0; 
+   left: 0; 
+   min-width: 100%; 
+   min-height: 100%;
+   object-fit: cover; 
+   z-index: -1; 
+ }
  

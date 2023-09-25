@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +26,7 @@ if ($_SESSION["connexion"] == true) {
     echo "La connexion n'est pas établie";
     header('Location: http://localhost/intra/connect.php');
     session_destroy();
+    session_unset();
  }
 
 

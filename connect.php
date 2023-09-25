@@ -17,7 +17,12 @@ session_start( );
     
 </head>
 
-<body class="bodyConnect">
+<body class="bodyConnect"  >
+
+<video autoplay muted loop id="background-video">
+  <source src="img\cegeploop.mp4" type="video/mp4">
+ 
+</video>
 
 <?php
 if ($_SERVER["REQUEST_METHOD"]=="POST"){
@@ -60,7 +65,7 @@ $conn->close();
 
 ?>
 
-    <img src="img/logocegep.jpg" class="logoCegepConnect" alt="logo du cegep">
+   
     <div class="centering">
             <div class="formulaireCo" >
             
