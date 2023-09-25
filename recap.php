@@ -29,7 +29,7 @@ if($conn->connect_error){
 
 $conn->query("SET NAMES utf8");
 
-$sql = "SELECT heureuxEleve,moyenHeureuxEleve,pasHeureuxEleve,heureuxEntreprise,moyenHeureuxEntreprise,pasHeureuxEntreprise FROM evenement ORDER BY id DESC LIMIT 1";
+$sql = "SELECT nom,heureuxEleve,moyenHeureuxEleve,pasHeureuxEleve,heureuxEntreprise,moyenHeureuxEntreprise,pasHeureuxEntreprise FROM evenement ORDER BY id DESC LIMIT 1";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
@@ -67,7 +67,7 @@ if (mysqli_num_rows($result) > 0) {
          text: "Recapitulatif Evenement"
      },
      axisY: {
-         title: ""
+         title: "<?php echo $row ["nom"]?>"
      },
      data: [{
          type: "column",
@@ -84,7 +84,70 @@ if (mysqli_num_rows($result) > 0) {
 
 
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<div class="titreRecapEvent">
+<h1 class="titreEvent">CLASSEMENT EVENEMENT</h1>
+</div>
+<div  class="RecapComparaison"> 
+   <?php 
+ $sql = "SELECT nom,date,departement,heureuxEleve,moyenHeureuxEleve,pasHeureuxEleve,heureuxEntreprise,moyenHeureuxEntreprise,pasHeureuxEntreprise,lieu,heure FROM evenement ORDER BY heureuxEleve DESC ";
+ $result = $conn->query($sql);
 
+ if($result ->num_rows>0){
+     while($row=$result->fetch_assoc()){
+         
+         
+       
+         ?> 
+<table class="table " style="" >
+<thead>
+ <tr >
+   <th scope="col" >Nom </th>
+   <th scope="col">Date </th>
+   <th scope="col">Departement </th>
+  
+
+
+
+ </tr>
+</thead>
+<tbody>
+ <tr>
+   <th scope="row"><?php echo $row["nom"]?></th>
+   <td><?php echo $row["date"]?></td> 
+   <td><?php echo $row["departement"]?></td>
+
+ 
+ 
+
+   
+
+ </tr>
+
+</tbody>
+</table>
+
+<?php
+
+     }
+   
+   
+
+
+     
+ }else{
+     echo "0 results";
+ }
+ $conn->close();
+ 
+
+ 
+ 
+ ?>
+
+
+
+
+</div>
 
 
 
