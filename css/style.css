@@ -132,6 +132,8 @@ top: 50%;
    background-color: #d2eeff;
    padding: 10px;
    text-align: center;
+   width: 300px;
+   max-width: 40%;
  }
  
 

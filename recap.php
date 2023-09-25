@@ -153,6 +153,9 @@ if (mysqli_num_rows($result) > 0) {
 
 
 
+<div class="footer">
+        <p>© 2023 Cegep de Trois-Rivières. Tous droits réservés.</p>
+    </div>
 
 <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
 </body>
