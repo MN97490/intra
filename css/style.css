@@ -13,8 +13,9 @@
    min-height: 100vh;
 }
 .bodyStat {
-   background-color: "#afe2ff";
+   background:#092d74;
    margin: 0;
+   width: 100%;
    
 }
 .logoCegepConnect{
@@ -140,15 +141,7 @@ top: 50%;
  }
  
 
- .table button {
-   background-color: #ff0000;
-   color: #fff;
-   border: none;
-   padding: 5px 10px;
-   cursor: pointer;
-   font-weight: bold;
- }
- 
+
 
  .LienIndexStat,
  .LienDecoStat {
@@ -170,3 +163,8 @@ top: 50%;
    z-index: -1; 
  }
  
+ .bodyRecap{
+background: #092d74;
+margin: 0;
+width: 100%;
+ }
