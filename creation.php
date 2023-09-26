@@ -21,7 +21,7 @@ session_start();
 <?php
 
 
-$nomevent,$localevent,$heurevent,$datevent,$departevent = "";
+$nomevent=$localevent=$heurevent=$datevent=$departevent ="" ;
 // Set session variables
 if ($_SESSION["connexion"] == true) {
 
@@ -45,8 +45,7 @@ if ($_SESSION["connexion"] == true) {
     <input type="text" id="datevent" name="datevent" value = "<?php echo $datevent;?>"><br>
     <label>departement de l'evenement:</label>
     <input type="text" id="departevent" name="departevent" value = "<?php echo $departevent;?>"><br>
-    <input type="submit">
-    <button class="CreerEvent">Creer un evenement</button><br>
+    <input type="submit" value="Creation">
     <a href="index.php">retour vers index</a>
 </form>
 <?php

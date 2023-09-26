@@ -83,7 +83,6 @@ if (mysqli_num_rows($result) > 0) {
 </script>
 </head>
 <body class="bodyRecap">
-    
 
 
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
