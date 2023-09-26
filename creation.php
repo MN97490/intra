@@ -17,7 +17,11 @@ session_start();
 </head>
 <body class="bodycreation">
 
+
 <?php
+
+
+$nomevent,$localevent,$heurevent,$datevent,$departevent = "";
 // Set session variables
 if ($_SESSION["connexion"] == true) {
 
@@ -30,20 +34,24 @@ if ($_SESSION["connexion"] == true) {
  }
   
 ?>
-<form class="formcreation">
+<form class="formcreation" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"method="post">
     <label>nom de l'evenement:</label>
-    <input type="text" id="nomevent" name="nomevent"><br>
+    <input type="text" id="nomevent" name="nomevent" value = "<?php echo $nomevent;?>"><br>
     <label>local de l'evenement:</label>
-    <input type="text" id="localevent" name="localevent"><br>
+    <input type="text" id="localevent" name="localevent" value = "<?php echo $localevent;?>"><br>
     <label>heure de l'evenement:</label>
-    <input type="text" id="heurevent" name="heurevent"><br>
+    <input type="text" id="heurevent" name="heurevent" value = "<?php echo $heurevent;?>"><br>
     <label>date de l'evenement:</label>
-    <input type="text" id="datevent" name="datevent"><br>
+    <input type="text" id="datevent" name="datevent" value = "<?php echo $datevent;?>"><br>
     <label>departement de l'evenement:</label>
-    <input type="text" id="departevent" name="departevent"><br>
+    <input type="text" id="departevent" name="departevent" value = "<?php echo $departevent;?>"><br>
+    <input type="submit">
     <button class="CreerEvent">Creer un evenement</button><br>
     <a href="index.php">retour vers index</a>
 </form>
+<?php
+$sql = "INSERT INTO evenement (nom,date,departement,lieu,heure)
+VALUES ('$nomevent','$datevent','$departevent','$heurevent')";?>
 
 <div class="footer">
     <div class="footerContent">
