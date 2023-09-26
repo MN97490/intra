@@ -41,7 +41,7 @@ session_start();
 <nav id='menu'>
   <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
   <ul>
-    <li><a href='http://localhost/intra/connect.php'>Accueil</a></li>
+    <li><a href='http://localhost/intra/index.php'>Accueil</a></li>
     <li><a href='http://localhost/intra/creation.php'>Création</a></li>
     <li><a href='http://localhost/intra/stat.php'>Statistiques</a></li>
     <li><a href='http://localhost/intra/vote.php'>Vote</a></li>
