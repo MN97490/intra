@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
 
     $password = sha1($password,false);
     echo $password;
-
+    $_SESSION['user'] = $user; 
     // verifier si l'usager est dans la bd , activer la session
     $servername="localhost";
     $usernameDB="root";

@@ -35,14 +35,42 @@ if ($_SESSION["connexion"] == true) {
     session_destroy();
 
  }
- $servername = "localhost";
+ $servername="localhost";
+ $usernameDB="root";
+ $passwordDB="root";
+ $dbname="intra";
+ $conn = mysqli_connect($servername,$usernameDB,$passwordDB,$dbname);
 
- $username = "root";
+ $sql = "SELECT user FROM usager WHERE administrateur = 1";
+$result = mysqli_query($conn, $sql);
 
- $password ="root";
+$nom_utilisateur = $_SESSION['user']; 
 
- $db = "intra";
- $conn = mysqli_connect($servername, $username, $password, $db);
+
+$sql = "SELECT administrateur FROM usager WHERE user = '$nom_utilisateur'";
+$result = mysqli_query($conn, $sql);
+
+if ($result) {
+    $row = mysqli_fetch_assoc($result);
+    $statut_administrateur = (int) $row['administrateur'];
+
+  
+
+   
+    if ($statut_administrateur === 1) {
+       
+    } else {
+       
+        echo "Vous n'êtes pas administrateur. Vous ne pouvez pas accéder à cette page.";
+        header('Location: http://localhost/intra/index.php');
+    }
+} else {
+
+    echo "Erreur : " . mysqli_error($conn);
+  
+}
+
+
  if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (empty($_POST['nomevent'])) {
         $nomEventError = "Le nom ne peut pas être vide";
