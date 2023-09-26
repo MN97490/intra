@@ -22,8 +22,11 @@ session_start();
 
 
 $nomevent=$localevent=$heurevent=$datevent=$departevent ="" ;
+$erreur =false;
+$nomEventError = $localEventError = $heureEventError = $dateEventError =$departEventError = "";
 // Set session variables
 if ($_SESSION["connexion"] == true) {
+  
 
     echo "La connexion est réussie";
  } else {
@@ -32,25 +35,89 @@ if ($_SESSION["connexion"] == true) {
     session_destroy();
 
  }
-  
+ $servername = "localhost";
+
+ $username = "root";
+
+ $password ="root";
+
+ $db = "intra";
+ $conn = mysqli_connect($servername, $username, $password, $db);
+ if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (empty($_POST['nomevent'])) {
+        $nomEventError = "Le nom ne peut pas être vide";
+        $erreur = true;
+    } else {
+        $nomevent = $_POST['nomevent'];
+    }
+    if (empty($_POST['localevent'])) {
+        $localEventError = "Le local ne peut pas être vide";
+        $erreur = true;
+    } else {
+        $localevent = $_POST['localevent'];
+    }
+    if (empty($_POST['heurevent'])) {
+        $heureEventError = "L'heure ne peut pas être vide";
+        $erreur = true;
+    } else {
+        $heurevent = $_POST['heurevent'];
+    }
+    if (empty($_POST['datevent'])) {
+        $dateEventError = "La date ne peut pas être vide";
+        $erreur = true;
+    } else {
+        $dateevent = $_POST['datevent'];
+    }
+    if (empty($_POST['departevent'])) {
+        $departEventError = "Le département ne peut pas être vide";
+        $erreur = true;
+    } else {
+        $departevent = $_POST['departevent'];
+    }
+
+   
+    if (!$erreur) {
+        $sql = "INSERT INTO evenement (nom, date, departement, lieu, heure)
+                VALUES ('$nomevent', '$dateevent', '$departevent', '$localevent', '$heurevent')";
+        if (mysqli_query($conn, $sql)) {
+            echo "Enregistrement réussi";
+           
+          
+        } else {
+            echo "Erreur : " . $sql . "<br>" . mysqli_error($conn);
+        }
+    }
+}
+
+function trojan($data){
+    return $data; 
+ }
+ if($_SERVER['REQUEST_METHOD'] != "POST" || $erreur==true){
 ?>
 <form class="formcreation" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"method="post">
     <label>nom de l'evenement:</label>
     <input type="text" id="nomevent" name="nomevent" value = "<?php echo $nomevent;?>"><br>
+    <p style="color:red;"><?php echo $nomEventError;?></p>
     <label>local de l'evenement:</label>
     <input type="text" id="localevent" name="localevent" value = "<?php echo $localevent;?>"><br>
+    <p style="color:red;"><?php echo $localEventError;?></p>
     <label>heure de l'evenement:</label>
     <input type="text" id="heurevent" name="heurevent" value = "<?php echo $heurevent;?>"><br>
+    <p style="color:red;"><?php echo $heureEventError;?></p>
     <label>date de l'evenement:</label>
     <input type="text" id="datevent" name="datevent" value = "<?php echo $datevent;?>"><br>
+    <p style="color:red;"><?php echo $dateEventError;?></p>
     <label>departement de l'evenement:</label>
     <input type="text" id="departevent" name="departevent" value = "<?php echo $departevent;?>"><br>
+    <p style="color:red;"><?php echo $departEventError;?></p>
     <input type="submit" value="Creation">
     <a href="index.php">retour vers index</a>
 </form>
 <?php
-$sql = "INSERT INTO evenement (nom,date,departement,lieu,heure)
-VALUES ('$nomevent','$datevent','$departevent','$heurevent')";?>
+
+}
+?>
+
 
 <div class="footer">
     <div class="footerContent">
