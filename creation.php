@@ -102,10 +102,10 @@ function trojan($data){
     <input type="text" id="localevent" name="localevent" value = "<?php echo $localevent;?>"><br>
     <p style="color:red;"><?php echo $localEventError;?></p>
     <label>heure de l'evenement:</label>
-    <input type="text" id="heurevent" name="heurevent" value = "<?php echo $heurevent;?>"><br>
+    <input type="time" id="heurevent" name="heurevent" value = "<?php echo $heurevent;?>"><br>
     <p style="color:red;"><?php echo $heureEventError;?></p>
     <label>date de l'evenement:</label>
-    <input type="text" id="datevent" name="datevent" value = "<?php echo $datevent;?>"><br>
+    <input type="date" id="datevent" name="datevent" value = "<?php echo $datevent;?>"><br>
     <p style="color:red;"><?php echo $dateEventError;?></p>
     <label>departement de l'evenement:</label>
     <input type="text" id="departevent" name="departevent" value = "<?php echo $departevent;?>"><br>
