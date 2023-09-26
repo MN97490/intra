@@ -29,7 +29,7 @@ if($conn->connect_error){
 
 $conn->query("SET NAMES utf8");
 
-$sql = "SELECT nom,heureuxEleve,moyenHeureuxEleve,pasHeureuxEleve,heureuxEntreprise,moyenHeureuxEntreprise,pasHeureuxEntreprise FROM evenement ORDER BY id DESC LIMIT 1";
+$sql = "SELECT nom,heureuxEleve,moyenHeureuxEleve,pasHeureuxEleve,heureuxEntreprise,moyenHeureuxEntreprise,pasHeureuxEntreprise FROM evenement WHERE heureuxEleve >= 1 ORDER BY id DESC LIMIT 1";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
@@ -56,8 +56,10 @@ if (mysqli_num_rows($result) > 0) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Recapitulatif</title>
     <link rel="stylesheet"  href="css/style.css">
+    <link rel="shortcut icon" type="image/png" href="img\apple-icon-72x72.png"/>
+    
     <script>window.onload = function() {
  
  var chart = new CanvasJS.Chart("chartContainer", {
@@ -81,6 +83,7 @@ if (mysqli_num_rows($result) > 0) {
 </script>
 </head>
 <body class="bodyRecap">
+    
 
 
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
@@ -153,9 +156,13 @@ if (mysqli_num_rows($result) > 0) {
 
 
 
-<div class="footer">
-        <p>© 2023 Cegep de Trois-Rivières. Tous droits réservés.</p>
+<div class="footerRecap">
+    <div class="footerContent">
+        <img src="img/logocegep.jpg" class="logocegepFooter" alt="logocegep">
+        <p>© Tous droits réservés - Cégep de Trois-Rivières - 2023</p>
     </div>
+</div>
+
 
 <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
 </body>

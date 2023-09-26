@@ -8,11 +8,63 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet"  href="css/style.css">
+    <link rel="shortcut icon" type="image/png" href="img\apple-icon-72x72.png"/>
    
 </head>
 <body class="bodyStat">
+    
+    <?php 
+     $servername="localhost";
+     $username="root";
+     $password="root";
+     $db="intra";
+     $conn = new mysqli($servername,$username,$password,$db);
+
+     if($conn->connect_error){
+         die("Connection failed:".$conn->connect_error);
+    
+    
+     }
+     
+     $conn->query("SET NAMES utf8");
+    
+    $sql = "SELECT user FROM usager";
+    $result = $conn->query($sql);
+   
+    if($result ->num_rows>0){
+        while($row=$result->fetch_assoc()){
+            
+            
+          
+            ?> 
+   
+<nav id='menu'>
+  <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+  <ul>
+    <li><a href='http://localhost/intra/connect.php'>Accueil</a></li>
+    <li><a href='http://localhost/intra/creation.php'>Création</a></li>
+    <li><a href='http://localhost/intra/stat.php'>Statistiques</a></li>
+    <li><a href='http://localhost/intra/vote.php'>Vote</a></li>
+    <li><a  href='http://localhost/intra/recap.php'>Récapitulatif</a>
+    </li>
+    <li><a class="decoContent" href='http://localhost/intra/deco.php'> <?php echo $row["user"]?>  <img src="img\se-deconnecter.png"  class="decoIcon"alt="Deco"> </a></li>
+   
+  </ul>
+</nav>
+<?php
+   }
+   
+   
 
 
+     
+}else{
+    echo "0 results";
+}
+$conn->close();
+
+
+?>
 <?php
 // Set session variables
 
@@ -33,10 +85,7 @@ if ($_SESSION["connexion"] == true) {
  
 
 
- $servername="localhost";
- $username="root";
- $password="root";
- $db="intra";
+
 
  $conn = new mysqli($servername,$username,$password,$db);
 
@@ -118,15 +167,16 @@ if ($_SESSION["connexion"] == true) {
  ?>
 
 
-    <button  class=" btnIndexStat"><a href="index.php" class="LienIndexStat">index</a></button>
-    <button class="btnDeconnexion " id="btnDeconnexion" name="btnDeconnexionStat"> <a href="deco.php" class="LienDecoStat">Deconnexion</a></button>
-
 
 
   
 
-<div class="footer">
-        <p>© 2023 Cegep de Trois-Rivières. Tous droits réservés.</p>
+    <div class="footerStat">
+    <div class="footerContent">
+        <img src="img/logocegep.jpg" class="logocegepFooter" alt="logocegep">
+        <p>© Tous droits réservés - Cégep de Trois-Rivières - 2023</p>
     </div>
+</div>
+
 </body>
 </html>

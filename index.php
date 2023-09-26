@@ -15,6 +15,7 @@ session_start();
     <link rel="stylesheet"  href="css/style.css">
 
     <title>index</title>
+    <link rel="shortcut icon" type="image/png" href="img\apple-icon-72x72.png"/>
 </head>
 <body>
 <?php
@@ -37,6 +38,12 @@ if ($_SESSION["connexion"] == true) {
 <button class="BtnIndex"><a href="vote.php" class="LienIndex">vote.php</a></button>
 
 
+<div class="footer">
+    <div class="footerContent">
+        <img src="img/logocegep.jpg" class="logocegepFooter" alt="logocegep">
+        <p>© Tous droits réservés - Cégep de Trois-Rivières - 2023</p>
+    </div>
+</div>
 
 
 </body>

@@ -12,6 +12,8 @@ session_start();
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet"  href="css/style.css">
     <title>vote eleve</title>
+    <link rel="shortcut icon" type="image/png" href="img\apple-icon-72x72.png"/>
+    
 </head>
     <body class="bodyvote">
     <?php
@@ -35,5 +37,14 @@ if ($_SESSION["connexion"] == true) {
         <button class="bad">( ͡° ʖ̯ ͡°)</button>
     </div>
     </form>
+
+
+    <div class="footer">
+    <div class="footerContent">
+        <img src="img/logocegep.jpg" class="logocegepFooter" alt="logocegep">
+        <p>© Tous droits réservés - Cégep de Trois-Rivières - 2023</p>
+    </div>
+</div>
+
 </body>
 </html>

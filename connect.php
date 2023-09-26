@@ -14,6 +14,7 @@ session_start( );
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
     <link rel="stylesheet"  href="css/style.css">
     <title>Connexion</title>
+    <link rel="shortcut icon" type="image/png" href="img\apple-icon-72x72.png"/>
     
 </head>
 
@@ -80,9 +81,13 @@ $conn->close();
             </div>
 
     </div>
-    <div class="footer">
-        <p>© 2023 Cegep de Trois-Rivières. Tous droits réservés.</p>
+    <div class="footerConnect">
+    <div class="footerContent">
+        <img src="img\logoCegepNoBg.png" class="logocegepFooter" alt="logocegep">
+        <p>© Tous droits réservés - Cégep de Trois-Rivières - 2023</p>
     </div>
+</div>
+
    
 
     
