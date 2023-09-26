@@ -52,4 +52,16 @@ if (verifierStatutAdministrateur($conn, $nom_utilisateur)) {
    
     header('Location: http://localhost/intra/index.php');
 }
+
+function deleteRecord($conn, $id,$table) {
+    $sql = "DELETE FROM $table WHERE id=$id";
+    
+    if ($conn->query($sql) === TRUE) {
+        return "Record deleted successfully";
+    } else {
+        return "Error deleting record: " . $conn->error;
+    }
+    
+    $conn->close();
+}
 ?>

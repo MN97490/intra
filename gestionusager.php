@@ -1,8 +1,9 @@
 <?php
-session_start( );
+session_start();
 
 include 'fonction.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,40 +13,81 @@ include 'fonction.php';
     <link rel="stylesheet"  href="css/style.css">
     <link rel="shortcut icon" type="image/png" href="img\apple-icon-72x72.png"/>
 </head>
-<body>
+<body class="bodyGestion">
 <?php
-// Set session variables
 
 if ($_SESSION["connexion"] == true) {
     echo "La connexion est réussie";
- } else {
+} else {
     echo "La connexion n'est pas établie";
     header('Location: http://localhost/intra/connect.php');
     session_destroy();
     session_unset();
- }
+}
 
- $servername="localhost";
-    $usernameDB="root";
-    $passwordDB="root";
-    $dbname="intra";
-
-    //creez la connection
-    $conn = new mysqli($servername,$usernameDB,$passwordDB,$dbname);
-if($conn->connect_error){
-    die("Connection failed:".$conn->connect_error);
+$servername = "localhost";
+$usernameDB = "root";
+$passwordDB = "root";
+$dbname = "intra";
+$table = "usager";
 
 
+$conn = new mysqli($servername, $usernameDB, $passwordDB, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
 $conn->query("SET NAMES utf8");
 
-
-
 $nom_utilisateur = $_SESSION['user'];
 $resultat = verifierStatutAdministrateur($conn, $nom_utilisateur);
 
+$sql = "SELECT id,user,password,administrateur FROM usager ";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        ?>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nom Utilisateur</th>
+                    <th scope="col">Mot de Passe</th>
+                    <th scope="col">Administrateur</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><?php echo $row["id"] ?></td>
+                    <td><?php echo $row["user"] ?></td>
+                    <td><?php echo $row["password"] ?></td>
+                    <td><?php echo $row["administrateur"] ?></td>
+                    <td>
+                        <form method="post" action="">
+                            <input type="hidden" name="id" value="<?php echo $row["id"] ?>">
+                            <input type="hidden" name="table" value="<?php echo $table ?>">
+                            <button type="submit" name="deleteButton">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <?php
+        
+        if (isset($_POST["deleteButton"])) {
+            $id = $_POST["id"];
+            $table = $_POST["table"];
+            deleteRecord($conn, $id, $table);
+            header('Location: gestionusager.php');
+        }
+    }
+} else {
+    echo "0 results";
+}
+
+$conn->close();
 ?>
-    
 </body>
 </html>
