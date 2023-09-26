@@ -28,13 +28,6 @@ session_start();
      
      $conn->query("SET NAMES utf8");
     
-    $sql = "SELECT user FROM usager";
-    $result = $conn->query($sql);
-   
-    if($result ->num_rows>0){
-        while($row=$result->fetch_assoc()){
-            
-            
           
             ?> 
    
@@ -47,24 +40,11 @@ session_start();
     <li><a href='http://localhost/intra/vote.php'>Vote</a></li>
     <li><a  href='http://localhost/intra/recap.php'>Récapitulatif</a>
     </li>
-    <li><a class="decoContent" href='http://localhost/intra/deco.php'> <?php echo $row["user"]?>  <img src="img\se-deconnecter.png"  class="decoIcon"alt="Deco"> </a></li>
+    <li><a class="decoContent" href='http://localhost/intra/deco.php'> <?php echo$_SESSION['user']?>  <img src="img\se-deconnecter.png"  class="decoIcon"alt="Deco"> </a></li>
    
   </ul>
 </nav>
-<?php
-   }
-   
-   
 
-
-     
-}else{
-    echo "0 results";
-}
-$conn->close();
-
-
-?>
 <?php
 // Set session variables
 

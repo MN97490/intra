@@ -1,7 +1,7 @@
 <?php
 session_start( );
 
-
+include 'fonction.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,33 +40,10 @@ if($conn->connect_error){
 
 $conn->query("SET NAMES utf8");
 
-$sql = "SELECT user FROM usager WHERE administrateur = 1";
-$result = mysqli_query($conn, $sql);
-
-$nom_utilisateur = $_SESSION['user']; 
 
 
-$sql = "SELECT administrateur FROM usager WHERE user = '$nom_utilisateur'";
-$result = mysqli_query($conn, $sql);
-
-if ($result) {
-    $row = mysqli_fetch_assoc($result);
-    $statut_administrateur = (int) $row['administrateur'];
-
-  
-
-   
-    if ($statut_administrateur === 1) {
-       
-    } else {
-       
-        echo "Vous n'êtes pas administrateur. Vous ne pouvez pas accéder à cette page.";
-    }
-} else {
-
-    echo "Erreur : " . mysqli_error($conn);
-  
-}
+$nom_utilisateur = $_SESSION['user'];
+$resultat = verifierStatutAdministrateur($conn, $nom_utilisateur);
 
 ?>
     
