@@ -1,5 +1,6 @@
 <?php
 session_start();
+unset($_SESSION['verifDirectionU']);
 
 include 'fonction.php';
 ?>
@@ -30,7 +31,8 @@ $usernameDB = "root";
 $passwordDB = "root";
 $dbname = "intra";
 $table = "usager";
-
+$_SESSION["modifidU"]="";
+$_SESSION["modiftableU"]="";
 
 $conn = new mysqli($servername, $usernameDB, $passwordDB, $dbname);
 if ($conn->connect_error) {
@@ -64,13 +66,23 @@ if ($result->num_rows > 0) {
                     <td><?php echo $row["user"] ?></td>
                     <td><?php echo $row["password"] ?></td>
                     <td><?php echo $row["administrateur"] ?></td>
-                    <td>
+                    <td >
                         <form method="post" action="">
                             <input type="hidden" name="id" value="<?php echo $row["id"] ?>">
                             <input type="hidden" name="table" value="<?php echo $table ?>">
-                            <button type="submit" name="deleteButton">Supprimer</button>
+                            <button type="submit" name="deleteButton" class="deleteButton">Supprimer</button>
                         </form>
+                       
+                        <form method="post" action="modif.php">
+                            <input type="hidden" name="id" value="<?php echo $row["id"] ; $_SESSION["modifidU"]= $row["id"]; ?>">
+                            <input type="hidden" name="table" value="<?php echo $table ;$_SESSION["modiftableU"]=$table; ?>">
+                            <input type="hidden" name="verif" value="<?php $_SESSION["verifDirectionU"]=true; ?>">
+                            <button type="submit" name="modifBtn" class="modifBtn">Modifier</button>
+                        </form>
+                   
+                    
                     </td>
+                    
                 </tr>
             </tbody>
         </table>
@@ -81,6 +93,7 @@ if ($result->num_rows > 0) {
             $table = $_POST["table"];
             deleteRecord($conn, $id, $table);
             header('Location: gestionusager.php');
+            
         }
     }
 } else {

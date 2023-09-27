@@ -1,8 +1,8 @@
 <?php
 session_start( );
 
-
-
+unset($_SESSION['verifDirectionU']);
+unset($_SESSION["connexion"]);
 
 
 ?>
@@ -33,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
     $password = sha1($password,false);
     echo $password;
     $_SESSION['user'] = $user; 
+    $_SESSION["verifDirectionU"]=false;
     // verifier si l'usager est dans la bd , activer la session
     $servername="localhost";
     $usernameDB="root";

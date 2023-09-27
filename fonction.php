@@ -64,4 +64,19 @@ function deleteRecord($conn, $id,$table) {
     
     $conn->close();
 }
+
+function modifRecord($conn, $id,$table) {
+    $sql = "UPDATE $table SET  WHERE id=$id";
+    
+    if ($conn->query($sql) === TRUE) {
+        return "Record deleted successfully";
+    } else {
+        return "Error deleting record: " . $conn->error;
+    }
+    
+    $conn->close();
+}
+
+
+
 ?>
