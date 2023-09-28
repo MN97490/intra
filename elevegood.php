@@ -21,5 +21,3 @@ $incre->close();
 header('Location: vote.php');
 ?>
 
-git config --global user.email "xjeremiedrx@gmail.com"
-  git config --global user.name "jaulethug"
