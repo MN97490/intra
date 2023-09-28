@@ -19,7 +19,7 @@ $incre->bind_param("i", $id);
 $id = 1;
 $incre->execute();
 $incre->close();
-header('Location: index.php');
+header('Location: vote.php');
 ?>
 
  
