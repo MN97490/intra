@@ -17,7 +17,7 @@ unset($_SESSION['verifDirectionU']);
     <title>index</title>
     <link rel="shortcut icon" type="image/png" href="img\apple-icon-72x72.png"/>
 </head>
-<body>
+<body class="bodindex">
 <?php
 // Set session variables
 
