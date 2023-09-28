@@ -15,6 +15,11 @@ include 'fonction.php';
     <link rel="shortcut icon" type="image/png" href="img\apple-icon-72x72.png"/>
 </head>
 <body class="bodyGestion">
+<form method="post" action="creationUsager.php">
+                       
+                           
+                       <button type="submit" name="ajoutBtn" class="ajoutBtn">Ajout Utilisateur</button>
+                   </form>
 <?php
 
 if ($_SESSION["connexion"] == true) {
@@ -50,6 +55,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         ?>
+         
         <table class="table">
             <thead>
                 <tr>
