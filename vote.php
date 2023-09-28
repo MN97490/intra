@@ -30,15 +30,19 @@ if ($_SESSION["connexion"] == true) {
  }
   
 ?>
-
-        <form action="" method="get">
-        <div name ="divvote">
-        <button class="good">( ° ͜ʖ °)</button>
-        <button class="mid">¯\_(ツ)_/¯</button>
-        <button class="bad">( ͡° ʖ̯ ͡°)</button>
-    </div>
-    </form>
-
+<div name ="divvote">
+        
+        <form action="elevegood.php" method="post">
+        <button class="good" type="submit">( ° ͜ʖ °)</button>
+        </form>
+        <form action="elevemid" method="post">
+        <button class="mid" type="submit">¯\_(ツ)_/¯</button>
+        </form>
+        <form action="elevebad.php" method="post">
+        <button class="bad" type="submit">( ͡° ʖ̯ ͡°)</button>
+</form>
+    
+ </div>
 
     <div class="footer">
     <div class="footerContent">
