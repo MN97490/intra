@@ -14,19 +14,13 @@ include 'fonction.php';
 <?php 
 if ($_SESSION["connexion"] == true) {
     echo "La connexion est réussie";
+    $nom_utilisateur = $_SESSION['user'];
+$resultat = verifierStatutAdministrateur($conn, $nom_utilisateur);
 } else {
     echo "La connexion n'est pas établie";
     header('Location: http://localhost/intra/connect.php');
     session_destroy();
     session_unset();
-}
-
-if($_SESSION["verifDirectionU"]==true){
-    echo "test";
-
-}else {
-    header('Location: http://localhost/intra/index.php');
-
 }
 
 $servername = "localhost";
@@ -42,8 +36,13 @@ if ($conn->connect_error) {
 }
 
 $conn->query("SET NAMES utf8");
-$nom_utilisateur = $_SESSION['user'];
-$resultat = verifierStatutAdministrateur($conn, $nom_utilisateur);
+
+
+ if($_SESSION["verifDirectionU"]==true){
+    
+
+
+
 
 
 if ($_SESSION["modiftableU"]=="usager"){
@@ -114,6 +113,195 @@ function trojan($data){
 
 }
 } 
+}
+  else  if($_SESSION["verifDirectionE"]==true){
+    
+
+
+
+
+
+        if ($_SESSION["modiftableE"]=="evenement"){
+           
+           $id=$_SESSION["modifidE"];
+           $nomevent=$localevent=$heurevent=$datevent=$departevent ="" ;
+           $heureuxEleve=$moyenHeureuxEleve=$pasHeureuxEleve=$heureuxEntreprise=$moyenHeureuxEntreprise=$pasHeureuxEntreprise="";
+            
+        $erreur =false;
+        $nomEventError = $localEventError = $heureEventError = $dateEventError =$departEventError =$heureuxEleveErreur=$moyenHeureuxEleveErreur=$pasHeureuxEleveErreur=$heureuxEntrepriseErreur=$moyenHeureuxEntrepriseErreur=$pasHeureuxEntrepriseErreur= "";
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            if (empty($_GET['nomevent'])) {
+                 $nomEventError = "Le nom de l`evenement ne peut pas être vide";
+                $erreur = true;
+            } else {
+                $nomevent = $_GET['nomevent'];
+            }
+            if (empty($_GET['localevent'])) {
+                $localEventError= "Le mot de passe ne peut pas être vide";
+                $erreur = true;
+            } else {
+               
+                $localevent = $_GET['localevent'];
+              
+               
+            }
+            if (empty($_GET['heurevent'])) {
+                $heureEventError="L'heure de l'evenement ne peut pas être vide ";
+                $erreur = true;
+            } else {
+
+                $heurevent = $_GET['heurevent'];
+
+            }
+            if (empty($_GET['datevent'])) {
+                $dateEventError="La date de l'evenement ne peut pas être vide ";
+                $erreur = true;
+            } else {
+
+                $datevent = $_GET['datevent'];
+
+            }
+            if (empty($_GET['departevent'])) {
+                $departEventError="Le nom du departement  de l'evenement ne peut pas être vide ";
+                $erreur = true;
+            } else {
+
+                $departevent = $_GET['departevent'];
+
+            }
+            if (empty($_GET['heureuxEleve'])) {
+                $heureuxEleveErreur="La nombre d'eleve heureux de l'evenement ne peut pas être vide ";
+                $erreur = true;
+            } else {
+
+                $heureuxEleve = $_GET['heureuxEleve'];
+
+            }
+            if (empty($_GET['moyenHeureuxEleve'])) {
+                $moyenHeureuxEleveErreur="La nombre d'eleve neutre de l'evenement ne peut pas être vide ";
+                $erreur = true;
+            } else {
+
+                $moyenHeureuxEleve = $_GET['moyenHeureuxEleve'];
+
+            }
+            if (empty($_GET['moyenHeureuxEleve'])) {
+                $moyenHeureuxEleveErreur="La nombre d'eleve neutre de l'evenement ne peut pas être vide ";
+                $erreur = true;
+            } else {
+
+                $moyenHeureuxEleve = $_GET['moyenHeureuxEleve'];
+
+            }
+            if (empty($_GET['pasHeureuxEleve'])) {
+                $pasHeureuxEleveErreur="La nombre d'eleve mécontent de l'evenement ne peut pas être vide ";
+                $erreur = true;
+            } else {
+
+                $pasHeureuxEleve = $_GET['pasHeureuxEleve'];
+
+            }
+            if (empty($_GET['heureuxEntreprise'])) {
+                $heureuxEntrepriseErreur="La nombre d'entreprise heureuse de l'evenement ne peut pas être vide ";
+                $erreur = true;
+            } else {
+
+                $heureuxEntreprise = $_GET['heureuxEntreprise'];
+
+            }
+            if (empty($_GET['moyenHeureuxEntreprise'])) {
+                $moyenHeureuxEntrepriseErreur="La nombre d'entreprise neutre de l'evenement ne peut pas être vide ";
+                $erreur = true;
+            } else {
+
+                $moyenHeureuxEntreprise = $_GET['moyenHeureuxEntreprise'];
+
+            }
+            if (empty($_GET['pasHeureuxEntreprise'])) {
+                $moyenHeureuxEntrepriseErreur="La nombre d'entreprise mécontent de l'evenement ne peut pas être vide ";
+                $erreur = true;
+            } else {
+
+                $pasHeureuxEntreprise = $_GET['pasHeureuxEntreprise'];
+
+            }
+            
+        
+        
+        
+        
+               
+           
+        
+           
+            if (!$erreur) {
+                $sql ="UPDATE evenement SET nom='$nomevent' ,  lieu='$localevent', Heure='$heurevent', date='$datevent', departement='$departevent' ,heureuxEleve='$heureuxEleve',moyenHeureuxEleve='$moyenHeureuxEleve',pasHeureuxEleve='$pasHeureuxEleve',heureuxEntreprise='$heureuxEntreprise',moyenHeureuxEntreprise='$moyenHeureuxEntreprise',pasHeureuxEntreprise='$pasHeureuxEntreprise'  WHERE id=$id ";
+        
+               header('Location: http://localhost/intra/stat.php');
+                if (mysqli_query($conn, $sql)) {
+                    echo "Modification réussi";
+                   
+                  
+                } else {
+                    echo "Erreur : " . $sql . "<br>" . mysqli_error($conn);
+                }
+            }
+        }
+        
+        
+         if($_SERVER['REQUEST_METHOD'] != "GET" || $erreur==true){
+            ?>
+            <form class="formcreation" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"method="get">
+                <label>nom de l'evenement:</label>
+                <input type="text" id="nomevent" name="nomevent" value = "<?php echo $nomevent;?>"><br>
+                <p style="color:red;"><?php echo $nomEventError;?></p>
+                <label>local de l'evenement:</label>
+                <input type="text" id="localevent" name="localevent" value = "<?php echo $localevent;?>"><br>
+                <p style="color:red;"><?php echo $localEventError;?></p>
+                <label>heure de l'evenement:</label>
+                <input type="time" id="heurevent" name="heurevent" value = "<?php echo $heurevent;?>"><br>
+                <p style="color:red;"><?php echo $heureEventError;?></p>
+                <label>date de l'evenement:</label>
+                <input type="date" id="datevent" name="datevent" value = "<?php echo $datevent;?>"><br>
+                <p style="color:red;"><?php echo $dateEventError;?></p>
+                <label>departement de l'evenement:</label>
+                <input type="text" id="departevent" name="departevent" value = "<?php echo $departevent;?>"><br>
+                <p style="color:red;"><?php echo $departEventError;?></p>
+                <label>Nombre d'eleve heureux de l'evenement:</label>
+                <input type="text" id="heureuxEleve" name="heureuxEleve" value = "<?php echo $heureuxEleve;?>"><br>
+                <p style="color:red;"><?php echo $heureuxEleveErreur;?></p>
+                <label>Nombre d'eleve neutre de l'evenement:</label>
+                <input type="text" id="moyenHeureuxEleve" name="moyenHeureuxEleve" value = "<?php echo $moyenHeureuxEleve;?>"><br>
+                <p style="color:red;"><?php echo $moyenHeureuxEleveErreur;?></p>
+                <label>Nombre d'eleve mécontent de l'evenement:</label>
+                <input type="text" id="pasHeureuxEleve" name="pasHeureuxEleve" value = "<?php echo $pasHeureuxEleve;?>"><br>
+                <p style="color:red;"><?php echo $pasHeureuxEleveErreur;?></p>
+                <label>Nombre d'entreprise heureux de l'evenement:</label>
+                <input type="text" id="heureuxEntreprise" name="heureuxEntreprise" value = "<?php echo $heureuxEntreprise;?>"><br>
+                <p style="color:red;"><?php echo $heureuxEntrepriseErreur;?></p>
+                <label>Nombre d'entreprise neutre de l'evenement:</label>
+                <input type="text" id="moyenHeureuxEntreprise" name="moyenHeureuxEntreprise" value = "<?php echo $moyenHeureuxEntreprise;?>"><br>
+                <p style="color:red;"><?php echo $moyenHeureuxEntrepriseErreur;?></p>
+                <label>Nombre d'entreprise mécontente de l'evenement:</label>
+                <input type="text" id="pasHeureuxEntreprise" name="pasHeureuxEntreprise" value = "<?php echo $pasHeureuxEntreprise;?>"><br>
+                <p style="color:red;"><?php echo $pasHeureuxEntrepriseErreur;?></p>
+                
+                <input type="submit" value="Creation">
+                <a href="index.php">retour vers index</a>
+            </form>
+        <?php
+        
+        }
+        } 
+
+
+
+}
+
+else {
+    header('Location: http://localhost/intra/index.php');
+
+}
 ?>
 <body>
     

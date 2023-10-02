@@ -1,5 +1,7 @@
 <?php
 session_start();
+$_SESSION['verifDirectionU']=false;
+$_SESSION['verifDirectionE']=false;
 include 'fonction.php';
 ?>
 <!DOCTYPE html>

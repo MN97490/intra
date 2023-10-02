@@ -1,6 +1,7 @@
 <?php
 session_start();
-unset($_SESSION['verifDirectionU']);
+$_SESSION['verifDirectionU']=false;
+$_SESSION['verifDirectionE']=false;
 
 include 'fonction.php';
 ?>
