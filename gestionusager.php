@@ -41,7 +41,7 @@ include 'fonction.php';
 <?php
 
 if ($_SESSION["connexion"] == true) {
-    echo "La connexion est réussie";
+ 
 } else {
     echo "La connexion n'est pas établie";
     header('Location: http://localhost/intra/connect.php');
