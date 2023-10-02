@@ -1,5 +1,7 @@
 <?php
 session_start();
+$_SESSION['verifDirectionU']=false;
+$_SESSION['verifDirectionE']=false;
 include 'fonction.php';
 ?>
 <!DOCTYPE html>
@@ -17,7 +19,21 @@ include 'fonction.php';
     
 </head>
 <body class="bodycreation">
-
+  
+<nav id='menu'>
+  <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+  <ul>
+    <li><a href='http://localhost/intra/index.php'>Accueil</a></li>
+    <li><a href='http://localhost/intra/creation.php'>Création</a></li>
+    <li><a href='http://localhost/intra/stat.php'>Statistiques</a></li>
+    <li><a href='http://localhost/intra/choixvote.php'>Vote</a></li>
+    <li><a  href='http://localhost/intra/recap.php'>Récapitulatif</a>
+    </li>
+    <li><a href='http://localhost/intra/gestionusager.php'>Gestion Usager</a></li>
+    <li><a class="decoContent" href='http://localhost/intra/deco.php'> <?php echo$_SESSION['user']?>  <img src="img\se-deconnecter.png"  class="decoIcon"alt="Deco"> </a></li>
+   
+  </ul>
+</nav>
 
 <?php
 
@@ -102,23 +118,23 @@ function trojan($data){
  if($_SERVER['REQUEST_METHOD'] != "POST" || $erreur==true){
 ?>
 <form class="formcreation" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"method="post">
-    <label>nom de l'evenement:</label>
+    <label style="color:black;">nom de l'evenement:</label>
     <input type="text" id="nomevent" name="nomevent" value = "<?php echo $nomevent;?>"><br>
     <p style="color:red;"><?php echo $nomEventError;?></p>
-    <label>local de l'evenement:</label>
+    <label style="color:black;">local de l'evenement:</label>
     <input type="text" id="localevent" name="localevent" value = "<?php echo $localevent;?>"><br>
     <p style="color:red;"><?php echo $localEventError;?></p>
-    <label>heure de l'evenement:</label>
+    <label style="color:black;">heure de l'evenement:</label>
     <input type="time" id="heurevent" name="heurevent" value = "<?php echo $heurevent;?>"><br>
     <p style="color:red;"><?php echo $heureEventError;?></p>
-    <label>date de l'evenement:</label>
+    <label style="color:black;">date de l'evenement:</label>
     <input type="date" id="datevent" name="datevent" value = "<?php echo $datevent;?>"><br>
     <p style="color:red;"><?php echo $dateEventError;?></p>
-    <label>departement de l'evenement:</label>
+    <label style="color:black;">departement de l'evenement:</label>
     <input type="text" id="departevent" name="departevent" value = "<?php echo $departevent;?>"><br>
     <p style="color:red;"><?php echo $departEventError;?></p>
     <input type="submit" value="Creation">
-    <a href="index.php">retour vers index</a>
+ 
 </form>
 <?php
 

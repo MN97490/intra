@@ -10,12 +10,29 @@ include 'fonction.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creation Usager </title>
+    <link rel="stylesheet"  href="css/style.css">
+    <link rel="shortcut icon" type="image/png" href="img\apple-icon-72x72.png"/>
 </head>
-<body>
+<body class="bodyStat">
+<nav id='menu'>
+  <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+  <ul>
+    <li><a href='http://localhost/intra/index.php'>Accueil</a></li>
+    <li><a href='http://localhost/intra/creation.php'>Création</a></li>
+    <li><a href='http://localhost/intra/stat.php'>Statistiques</a></li>
+    <li><a href='http://localhost/intra/choixvote.php'>Vote</a></li>
+    <li><a  href='http://localhost/intra/recap.php'>Récapitulatif</a>
+    </li>
+    <li><a href='http://localhost/intra/gestionusager.php'>Gestion Usager</a></li>
+    <li><a class="decoContent" href='http://localhost/intra/deco.php'> <?php echo$_SESSION['user']?>  <img src="img\se-deconnecter.png"  class="decoIcon"alt="Deco"> </a></li>
+   
+  </ul>
+</nav>
+
 <?php
 
 if ($_SESSION["connexion"] == true) {
-    echo "La connexion est réussie";
+   
     $nom_utilisateur = $_SESSION['user'];
 $resultat = verifierStatutAdministrateur($conn, $nom_utilisateur);
 } else {
@@ -26,7 +43,7 @@ $resultat = verifierStatutAdministrateur($conn, $nom_utilisateur);
 }
 
 if($_SESSION["verifDirectionU"]==true){
-    echo "test";
+   
 
 }else {
     header('Location: http://localhost/intra/index.php');
@@ -101,13 +118,13 @@ function trojan($data){
  if($_SERVER['REQUEST_METHOD'] != "GET" || $erreur==true){
 ?>
 <form class="formcreation" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"method="get">
-    <label>Identifiant utilisateur :</label>
+    <label style="color:black;">Identifiant utilisateur :</label>
     <input type="text" id="usernameUser" name="usernameUser" value = "<?php echo $usernameUser;?>"><br>
     <p style="color:red;"><?php echo $usernameUserError;?></p>
-    <label>Mot de passe utilisateur :</label>
+    <label style="color:black;">Mot de passe utilisateur :</label>
     <input type="text" id="passwordUser" name="passwordUser" value = "<?php echo $passwordUser;?>"><br>
     <p style="color:red;"><?php echo $passwordUserError;?></p>
-    <label>Utilisateur Administrateur</label>
+    <label style="color:black;">Utilisateur Administrateur</label>
     <input type="checkbox" id="statutUser" name="statutUser" value="<?php echo $statutUser; ?>"><br>
  
    
@@ -119,6 +136,10 @@ function trojan($data){
 }
 } 
 ?>
-
+<div class="footer">
+    <div class="footerContent">
+        <img src="img/logocegep.jpg" class="logocegepFooter" alt="logocegep">
+        <p>© Tous droits réservés - Cégep de Trois-Rivières - 2023</p>
+    </div>
 </body>
 </html>

@@ -4,6 +4,7 @@
  .centering {
     text-align: center;
  }
+
  
 .bodyConnect {
    margin: 0;
@@ -381,14 +382,20 @@ max-width: 100%;
 
 .bodycreation{
 
-   background-color:#092D74;
+   background:#FAE4C7;
+   margin: 0;
+   width: 100%;
+
 
 }
 .bodyGestion{
-   background-color: #FAE4C7;
+   background:#FAE4C7;
+   margin: 0;
+   width: 100%;
 
 }
 
 .bodindex{
    background-color:#092D74;
 }
+
