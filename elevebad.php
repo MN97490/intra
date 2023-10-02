@@ -20,4 +20,3 @@ $result = mysqli_query($sql);
 header('Location: vote.php?id=' . $_GET['id']);
 ?>
 
- 

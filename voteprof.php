@@ -28,17 +28,17 @@ if ($_SESSION["connexion"] == true) {
     session_destroy();
 
  }
-  
+
 ?>
 <div name ="divvote">
         
-        <form action="elevegood.php?id=2" method="post">
+        <form action="elevegood.php?id=<?php echo $_GET['id']; ?>" method="get">
         <button class="good" type="submit">( ° ͜ʖ °)</button>
         </form>
-        <form action="elevemid.php" method="post">
+        <form action="elevemid.php?id=<?php echo $_GET['id']; ?>" method="get">
         <button class="mid" type="submit">¯\_(ツ)_/¯</button>
         </form>
-        <form action="elevebad.php" method="post">
+        <form action="elevebad.php?id=<?php echo $_GET['id']; ?>" method="get">
         <button class="bad" type="submit">( ͡° ʖ̯ ͡°)</button>
 </form>
     
