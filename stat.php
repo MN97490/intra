@@ -41,6 +41,7 @@ unset($_SESSION['verifDirectionU']);
     <li><a href='http://localhost/intra/vote.php'>Vote</a></li>
     <li><a  href='http://localhost/intra/recap.php'>Récapitulatif</a>
     </li>
+    <li><a href='http://localhost/intra/gestionusager.php'>Gestion Usager</a></li>
     <li><a class="decoContent" href='http://localhost/intra/deco.php'> <?php echo$_SESSION['user']?>  <img src="img\se-deconnecter.png"  class="decoIcon"alt="Deco"> </a></li>
    
   </ul>

@@ -156,11 +156,6 @@ if (mysqli_num_rows($result) > 0) {
 
 
 
-<div class="footerRecap">
-    <div class="footerContent">
-        <img src="img/logocegep.jpg" class="logocegepFooter" alt="logocegep">
-        <p>© Tous droits réservés - Cégep de Trois-Rivières - 2023</p>
-    </div>
 </div>
 
 
