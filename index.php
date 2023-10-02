@@ -50,7 +50,7 @@ if ($_SESSION["connexion"] == true) {
     <h1 class="bienvenue">bienvenue sur la page index</h1>
 <button class="BtnIndex"><a href="creation.php" class="LienIndex">creation.php</a></button>
 <button class="BtnIndex"><a href="stat.php" class="LienIndex">stat.php</a></button>
-<button class="BtnIndex"><a href="vote.php" class="LienIndex">vote.php</a></button>
+<button class="BtnIndex"><a href="choixvote.php" class="LienIndex">vote.php</a></button>
 
 
 <div class="footer">

@@ -1,7 +1,6 @@
 <?php
 session_start();
-$_SESSION['verifDirectionU']=false;
-$_SESSION['verifDirectionE']=false;
+unset($_SESSION['verifDirectionU']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,4 +52,4 @@ if ($_SESSION["connexion"] == true) {
 </div>
 
 </body>
-</html>  
+</html>
