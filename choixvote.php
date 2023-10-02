@@ -31,6 +31,8 @@ $servername="localhost";
 $usernameDB="root";
 $passwordDB="root";
 $dbname="intra";
+$_SESSION["idV"]=0;
+$id =  $_SESSION["idV"];
 $conn = mysqli_connect($servername,$usernameDB,$passwordDB,$dbname);
 
 $sql = "SELECT user FROM usager WHERE administrateur = 1";
@@ -54,10 +56,12 @@ if($result ->num_rows > 0){
                 </div>
                 <div class="col-3">
                     <?php echo "departement: ".$row["departement"];?>
-                    <a href="vote.php?id=<?php echo $row['id']; ?>">choisir</a>
+                    <a href="vote.php?id=<?php echo $row['id']; ?>">vote eleve</a>
+                    <a href="voteprof.php?id=<?php echo $row['id']; ?>">vote entreprise</a>
                 </div>
             </div>
         </div><?php
+        
     }
 }
 

@@ -13,11 +13,11 @@ if ($conn->connect_error) {
 
     die("Connection failed: " . $conn->connect_error);
 }
-
-$incre = $conn->prepare("UPDATE `evenement` SET `HeureuxEleve` = `HeureuxEleve` + 1 WHERE `id` = $_GET[id]");
-$incre->bind_param("i", $id);
-$incre->execute();
-$incre->close();
-header('Location: vote.php');
+ 
+//$incre = $conn->prepare("UPDATE `evenement` SET `pasHeureuxEleve` = `pasHeureuxEleve` + 1 WHERE `id` = $_GET[id]");
+$sql = "UPDATE evenement SET HeureuxEleve = HeureuxEleve + 1 WHERE id =" . $_GET['id'];
+$result = mysqli_query($sql);
+header('Location: vote.php?id=' . $_GET['id']);
 ?>
 
+ 

@@ -14,10 +14,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$incre = $conn->prepare("UPDATE `evenement` SET `moyenHeureuxEleve` = `moyenHeureuxEleve` + 1 WHERE `id` = $_GET[id]");
+$incre = $conn->prepare("UPDATE `evenement` SET `HeureuxEntreprise` = `HeureuxEntreprise` + 1 WHERE `id` = $_GET[id]");
 $incre->bind_param("i", $id);
 $incre->execute();
 $incre->close();
-header('Location: vote.php');
+header('Location: voteprof.php');
 ?>
 
