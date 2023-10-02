@@ -44,7 +44,7 @@ include 'fonction.php';
     <li><a href='http://localhost/intra/index.php'>Accueil</a></li>
     <li><a href='http://localhost/intra/creation.php'>Création</a></li>
     <li><a href='http://localhost/intra/stat.php'>Statistiques</a></li>
-    <li><a href='http://localhost/intra/vote.php'>Vote</a></li>
+    <li><a href='http://localhost/intra/choixvote.php'>Vote</a></li>
     <li><a  href='http://localhost/intra/recap.php'>Récapitulatif</a>
     </li>
     <li><a href='http://localhost/intra/gestionusager.php'>Gestion Usager</a></li>

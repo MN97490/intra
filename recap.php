@@ -85,6 +85,20 @@ if (mysqli_num_rows($result) > 0) {
 </script>
 </head>
 <body class="bodyRecap">
+<nav id='menu'>
+  <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+  <ul>
+    <li><a href='http://localhost/intra/index.php'>Accueil</a></li>
+    <li><a href='http://localhost/intra/creation.php'>Création</a></li>
+    <li><a href='http://localhost/intra/stat.php'>Statistiques</a></li>
+    <li><a href='http://localhost/intra/choixvote.php'>Vote</a></li>
+    <li><a  href='http://localhost/intra/recap.php'>Récapitulatif</a>
+    </li>
+    <li><a href='http://localhost/intra/gestionusager.php'>Gestion Usager</a></li>
+    <li><a class="decoContent" href='http://localhost/intra/deco.php'> <?php echo$_SESSION['user']?>  <img src="img\se-deconnecter.png"  class="decoIcon"alt="Deco"> </a></li>
+   
+  </ul>
+</nav>
 
 
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>

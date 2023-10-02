@@ -16,19 +16,21 @@ include 'fonction.php';
     <link rel="shortcut icon" type="image/png" href="img\apple-icon-72x72.png"/>
 </head>
 <body class="bodyGestion">
-<div>  
+ 
 <nav id='menu'>
   <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
   <ul>
     <li><a href='http://localhost/intra/index.php'>Accueil</a></li>
     <li><a href='http://localhost/intra/creation.php'>Création</a></li>
     <li><a href='http://localhost/intra/stat.php'>Statistiques</a></li>
-    <li><a href='http://localhost/intra/vote.php'>Vote</a></li>
+    <li><a href='http://localhost/intra/choixvote.php'>Vote</a></li>
     <li><a  href='http://localhost/intra/recap.php'>Récapitulatif</a>
     </li>
     <li><a href='http://localhost/intra/gestionusager.php'>Gestion Usager</a></li>
     <li><a class="decoContent" href='http://localhost/intra/deco.php'> <?php echo$_SESSION['user']?>  <img src="img\se-deconnecter.png"  class="decoIcon"alt="Deco"> </a></li>
-    </div>  
+   
+  </ul>
+</nav>
  <div>
 <form method="post" action="creationUsager.php">
                        
@@ -124,5 +126,6 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 ?>
+
 </body>
 </html>
