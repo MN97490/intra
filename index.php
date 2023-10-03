@@ -2,7 +2,7 @@
 session_start();
 $_SESSION['verifDirectionU']=false;
 $_SESSION['verifDirectionE']=false;
-
+$_SESSION["modifidV"]=null;
 ?>
 
 <!DOCTYPE html>

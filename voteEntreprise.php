@@ -15,7 +15,7 @@ include 'fonction.php';
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet"  href="css/style.css">
-    <title>Vote eleve</title>
+    <title>Vote entreprise</title>
     <link rel="shortcut icon" type="image/png" href="img\apple-icon-72x72.png"/>
    
 </head>
@@ -57,7 +57,7 @@ $conn->query("SET NAMES utf8");
 $id=$_SESSION["modifidV"];
 if(isset($_GET['voteButton']) && $_GET['voteButton'] == '( ° ͜ʖ °)')  {
     
-    $sql = "UPDATE evenement SET heureuxEleve = heureuxEleve + 1 WHERE id='$id'";
+    $sql = "UPDATE evenement SET heureuxEntreprise = heureuxEntreprise + 1 WHERE id='$id'";
 
     if ($conn->query($sql) === TRUE) {
         
@@ -68,7 +68,7 @@ if(isset($_GET['voteButton']) && $_GET['voteButton'] == '( ° ͜ʖ °)')  {
 if (isset($_GET['voteButton']) && $_GET['voteButton'] == '¯\_(ツ)_/¯ ')  {
     
     $id = $_SESSION["modifidV"];
-    $sql = "UPDATE evenement SET moyenHeureuxEleve = moyenHeureuxEleve + 1 WHERE id='$id'";
+    $sql = "UPDATE evenement SET moyenHeureuxEntreprise = moyenHeureuxEntreprise + 1 WHERE id='$id'";
 
     if ($conn->query($sql) === TRUE) {
        
@@ -80,7 +80,7 @@ if (isset($_GET['voteButton']) && $_GET['voteButton'] == '¯\_(ツ)_/¯ ')  {
 if (isset($_GET['voteButton']) && $_GET['voteButton'] == '( ͡° ʖ̯ ͡°) ')  {
     
     $id = $_SESSION["modifidV"];
-    $sql = "UPDATE evenement SET pasHeureuxEleve = pasHeureuxEleve + 1 WHERE id='$id'";
+    $sql = "UPDATE evenement SET pasHeureuxEntreprise = pasHeureuxEntreprise + 1 WHERE id='$id'";
 
     if ($conn->query($sql) === TRUE) {
      

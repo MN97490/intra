@@ -69,18 +69,24 @@ font-weight: bolder;
    background-color: green;
    font-weight: bolder;
    font-size:xx-large;
+   width: 350px;
+   height: 500px;
 }
 .mid{
    padding: 10%;
    background-color: yellow;
    font-weight: bolder;
    font-size:xx-large;
+   width: 350px;
+   height: 500px;
 }
 .bad{
    padding: 10%;
    background-color: red;
    font-weight: bolder;
    font-size:xx-large;
+   width: 350px;
+   height: 500px;
 }
 .CreerEvent{
    padding: 1%;
@@ -401,4 +407,18 @@ max-width: 100%;
    width: 100%;
 
 }
+.bodyVote{
+   background:#FAE4C7;
+   margin: 0;
+   width: 100%;
+align-items: center;
+justify-items: center;
 
+}
+.centrage {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   height: 100vh; 
+ }
