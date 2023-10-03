@@ -49,10 +49,7 @@ if ($_SESSION["connexion"] == true) {
     session_unset();
 }
 
-$servername = "localhost";
-$usernameDB = "root";
-$passwordDB = "root";
-$dbname = "intra";
+include 'log.php';
 $table = "usager";
 $_SESSION["modifidU"]="";
 $_SESSION["modiftableU"]="";

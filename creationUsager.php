@@ -50,11 +50,7 @@ if($_SESSION["verifDirectionU"]==true){
 
 }
 
-$servername = "localhost";
-$usernameDB = "root";
-$passwordDB = "root";
-$dbname = "intra";
-
+include 'log.php';
 
 
 $conn = new mysqli($servername, $usernameDB, $passwordDB, $dbname);

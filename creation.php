@@ -48,14 +48,11 @@ if ($_SESSION["connexion"] == true) {
  
  } else {
     echo "La connexion n'est pas établie";
-    header('Location: http://localhost/intra/connect.php');
+    header('Location: connect.php');
     session_destroy();
 
  }
- $servername="localhost";
- $usernameDB="root";
- $passwordDB="root";
- $dbname="intra";
+ include 'log.php';
  $conn = mysqli_connect($servername,$usernameDB,$passwordDB,$dbname);
 
  $sql = "SELECT user FROM usager WHERE administrateur = 1";

@@ -40,10 +40,7 @@ if ($_SESSION["connexion"] == true) {
     header('Location: http://localhost/intra/connect.php');
     session_destroy();
 }
-$servername = "localhost";
-$usernameDB = "root";
-$passwordDB = "root";
-$dbname = "intra";
+include 'log.php';
 $_SESSION["modifidV"] = "";
 $_SESSION["verifDirectionVEl"]=false;
 $_SESSION["verifDirectionVEN"]=false;

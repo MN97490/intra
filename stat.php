@@ -17,10 +17,7 @@ include 'fonction.php';
 <body class="bodyStat">
     
     <?php 
-     $servername="localhost";
-     $username="root";
-     $password="root";
-     $db="intra";
+    include 'log.php';
      $_SESSION["modifidE"]="";
      $_SESSION["modiftableE"]="";
      $table = "evenement";

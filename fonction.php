@@ -11,10 +11,7 @@
     session_unset();
  }
  //creez la connection
- $servername="localhost";
- $usernameDB="root";
- $passwordDB="root";
- $dbname="intra";
+ include 'log.php';
  $conn = new mysqli($servername,$usernameDB,$passwordDB,$dbname);
 if($conn->connect_error){
  die("Connection failed:".$conn->connect_error);

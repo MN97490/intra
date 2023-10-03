@@ -40,10 +40,7 @@ $resultat = verifierStatutAdministrateur($conn, $nom_utilisateur);
     session_unset();
 }
 
-$servername = "localhost";
-$usernameDB = "root";
-$passwordDB = "root";
-$dbname = "intra";
+include 'log.php';
 
 
 

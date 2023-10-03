@@ -37,10 +37,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
     $_SESSION["verifDirectionU"]=false;
     $_SESSION["verifDirectionE"]=false;
     // verifier si l'usager est dans la bd , activer la session
-    $servername="localhost";
-    $usernameDB="root";
-    $passwordDB="root";
-    $dbname="intra";
+ include 'log.php';
 
     //creez la connection
     $conn = new mysqli($servername,$usernameDB,$passwordDB,$dbname);

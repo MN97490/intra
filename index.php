@@ -44,7 +44,7 @@ if ($_SESSION["connexion"] == true) {
     session_destroy();
     session_unset();
  }
-
+ include 'log.php';
 
 ?>
     <h1 class="bienvenue">bienvenue sur la page index</h1>

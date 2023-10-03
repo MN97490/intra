@@ -15,11 +15,7 @@ if ($_SESSION["connexion"] == true) {
 
 	
 
-
-$servername="localhost";
-$username="root";
-$password="root";
-$db="intra";
+ include 'log.php';
 
 $conn = new mysqli($servername,$username,$password,$db);
 

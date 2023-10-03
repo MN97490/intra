@@ -32,11 +32,7 @@ if ($_SESSION["connexion"] == true) {
    
 }
 
-$servername = "localhost";
-$usernameDB = "root";
-$passwordDB = "root";
-$dbname = "intra";
-
+include 'log.php';
 
 
 
