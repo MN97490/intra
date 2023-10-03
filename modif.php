@@ -35,7 +35,7 @@ if ($_SESSION["connexion"] == true) {
 $resultat = verifierStatutAdministrateur($conn, $nom_utilisateur);
 } else {
     echo "La connexion n'est pas établie";
-    header('Location: http://localhost/intra/connect.php');
+    header('Location: connect.php');
     session_destroy();
     session_unset();
 }
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     if (!$erreur) {
         $sql ="UPDATE usager SET user='$usernameUser' ,  password='$passwordUser', administrateur='$statutUser' WHERE id=$id ";
 
-        header('Location: http://localhost/intra/gestionusager.php');
+        header('Location: gestionusager.php');
         if (mysqli_query($conn, $sql)) {
             echo "Modification réussi";
            
@@ -251,7 +251,7 @@ function trojan($data){
             if (!$erreur) {
                 $sql ="UPDATE evenement SET nom='$nomevent' ,  lieu='$localevent', Heure='$heurevent', date='$datevent', departement='$departevent' ,heureuxEleve='$heureuxEleve',moyenHeureuxEleve='$moyenHeureuxEleve',pasHeureuxEleve='$pasHeureuxEleve',heureuxEntreprise='$heureuxEntreprise',moyenHeureuxEntreprise='$moyenHeureuxEntreprise',pasHeureuxEntreprise='$pasHeureuxEntreprise'  WHERE id=$id ";
         
-               header('Location: http://localhost/intra/stat.php');
+               header('Location: stat.php');
                 if (mysqli_query($conn, $sql)) {
                     echo "Modification réussi";
                    
@@ -313,7 +313,7 @@ function trojan($data){
 }
 
 else {
-    header('Location: http://localhost/intra/index.php');
+    header('Location: index.php');
 
 }
 ?>

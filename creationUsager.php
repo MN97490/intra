@@ -17,17 +17,18 @@ include 'fonction.php';
 <nav id='menu'>
   <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
   <ul>
-    <li><a href='http://localhost/intra/index.php'>Accueil</a></li>
-    <li><a href='http://localhost/intra/creation.php'>Création</a></li>
-    <li><a href='http://localhost/intra/stat.php'>Statistiques</a></li>
-    <li><a href='http://localhost/intra/choixvote.php'>Vote</a></li>
-    <li><a  href='http://localhost/intra/recap.php'>Récapitulatif</a>
+    <li><a href='index.php'>Accueil</a></li>
+    <li><a href='creation.php'>Création</a></li>
+    <li><a href='stat.php'>Statistiques</a></li>
+    <li><a href='choixvote.php'>Vote</a></li>
+    <li><a  href='recap.php'>Récapitulatif</a>
     </li>
-    <li><a href='http://localhost/intra/gestionusager.php'>Gestion Usager</a></li>
-    <li><a class="decoContent" href='http://localhost/intra/deco.php'> <?php echo$_SESSION['user']?>  <img src="img\se-deconnecter.png"  class="decoIcon"alt="Deco"> </a></li>
+    <li><a href='gestionusager.php'>Gestion Usager</a></li>
+    <li><a class="decoContent" href='deco.php'> <?php echo$_SESSION['user']?>  <img src="img\se-deconnecter.png"  class="decoIcon"alt="Deco"> </a></li>
    
   </ul>
 </nav>
+
 
 <?php
 
@@ -37,7 +38,7 @@ if ($_SESSION["connexion"] == true) {
 $resultat = verifierStatutAdministrateur($conn, $nom_utilisateur);
 } else {
     echo "La connexion n'est pas établie";
-    header('Location: http://localhost/intra/connect.php');
+    header('Location: connect.php');
     session_destroy();
     session_unset();
 }
@@ -46,7 +47,7 @@ if($_SESSION["verifDirectionU"]==true){
    
 
 }else {
-    header('Location: http://localhost/intra/index.php');
+    header('Location: index.php');
 
 }
 
@@ -97,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         $sql = "INSERT INTO usager (user, password, administrateur)
         VALUES ('$usernameUser', '$passwordUser', '$statutUser')";
            
-        header('Location: http://localhost/intra/gestionusager.php');
+        header('Location: gestionusager.php');
         if (mysqli_query($conn, $sql)) {
             echo "Enregistrement réussi";
            

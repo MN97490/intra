@@ -6,7 +6,7 @@ if ($_SESSION["connexion"] == true) {
  
  } else {
     echo "La connexion n'est pas établie";
-    header('Location: http://localhost/intra/connect.php');
+    header('Location: connect.php');
     session_destroy();
     session_unset();
  }
@@ -17,7 +17,7 @@ if ($_SESSION["connexion"] == true) {
 
  include 'log.php';
 
-$conn = new mysqli($servername,$username,$password,$db);
+ $conn = new mysqli($servername,$usernameDB,$passwordDB,$dbname);
 
 if($conn->connect_error){
     die("Connection failed:".$conn->connect_error);
@@ -84,14 +84,14 @@ if (mysqli_num_rows($result) > 0) {
 <nav id='menu'>
   <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
   <ul>
-    <li><a href='http://localhost/intra/index.php'>Accueil</a></li>
-    <li><a href='http://localhost/intra/creation.php'>Création</a></li>
-    <li><a href='http://localhost/intra/stat.php'>Statistiques</a></li>
-    <li><a href='http://localhost/intra/choixvote.php'>Vote</a></li>
-    <li><a  href='http://localhost/intra/recap.php'>Récapitulatif</a>
+    <li><a href='index.php'>Accueil</a></li>
+    <li><a href='creation.php'>Création</a></li>
+    <li><a href='stat.php'>Statistiques</a></li>
+    <li><a href='choixvote.php'>Vote</a></li>
+    <li><a  href='recap.php'>Récapitulatif</a>
     </li>
-    <li><a href='http://localhost/intra/gestionusager.php'>Gestion Usager</a></li>
-    <li><a class="decoContent" href='http://localhost/intra/deco.php'> <?php echo$_SESSION['user']?>  <img src="img\se-deconnecter.png"  class="decoIcon"alt="Deco"> </a></li>
+    <li><a href='gestionusager.php'>Gestion Usager</a></li>
+    <li><a class="decoContent" href='deco.php'> <?php echo$_SESSION['user']?>  <img src="img\se-deconnecter.png"  class="decoIcon"alt="Deco"> </a></li>
    
   </ul>
 </nav>

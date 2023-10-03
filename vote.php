@@ -28,7 +28,7 @@ if ($_SESSION["connexion"] == true) {
     $resultat = verifierStatutAdministrateur($conn, $nom_utilisateur);
 } else {
     echo "La connexion n'est pas établie";
-    header('Location: http://localhost/intra/connect.php');
+    header('Location: connect.php');
    
 }
 

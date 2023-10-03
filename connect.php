@@ -4,7 +4,17 @@ session_start( );
 unset($_SESSION['verifDirectionU']);
 unset($_SESSION['verifDirectionE']);
 unset($_SESSION["connexion"]);
+function trojan($data){
 
+    $data = trim($data); 
+
+    $data = addslashes($data); 
+
+    $data = htmlspecialchars($data); 
+
+    return $data;
+
+}
 
 ?>
 <!DOCTYPE html> 
@@ -31,6 +41,9 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
     $user = $_POST['username'];
     $password= $_POST['password'];
 
+   $user=trojan($user);
+   $password=trojan ($password);
+
     $password = sha1($password,false);
     echo $password;
     $_SESSION['user'] = $user; 
@@ -46,18 +59,18 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
         die ("Connection failed:". $conn->connect_error);
     }
 $sql = "SELECT * FROM usager where user='$user' and password='$password' ";
-echo $sql;
+
 $result = $conn->query($sql);
 
 if ($result->num_rows >0){
     $row = $result->fetch_assoc();
     echo "<h1>Connecté</h1>";
     $_SESSION ["connexion"] = true;
-    header('Location: http://localhost/intra/index.php');
+    header('Location: index.php');
 }
 else {
     echo "<h2> Nom d'usager ou mot de passe invalide </h2>";
-    header('Location: http://localhost/intra/connect.php');
+    header('Location: connect.php');
 }
 $conn->close();
 

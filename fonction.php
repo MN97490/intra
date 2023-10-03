@@ -6,7 +6,7 @@
   
  } else {
     echo "La connexion n'est pas établie";
-    header('Location: http://localhost/intra/connect.php');
+    header('Location: connect.php');
     session_destroy();
     session_unset();
  }
@@ -47,7 +47,7 @@ if (verifierStatutAdministrateur($conn, $nom_utilisateur)) {
    
 } else {
    
-    header('Location: http://localhost/intra/index.php');
+    header('Location: index.php');
 }
 
 function deleteRecord($conn, $id,$table) {

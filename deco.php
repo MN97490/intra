@@ -1,7 +1,7 @@
 <?php 
 session_start();
 session_destroy();
-header('Location: http://localhost/intra/connect.php');
+header('Location: connect.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
