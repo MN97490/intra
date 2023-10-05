@@ -422,3 +422,15 @@ justify-items: center;
    align-items: center;
    height: 100vh; 
  }
+.imgcegepindex{
+   max-width: 300px;
+   max-height: 300px;
+}
+.divimageindex{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: auto;
+   width: auto;
+   padding: 5%;
+}
