@@ -70,31 +70,38 @@ $resultat = verifierStatutAdministrateur($conn, $nom_utilisateur);
         $nomEventError = "Le nom ne peut pas être vide";
         $erreur = true;
     } else {
-        $nomevent = $_POST['nomevent'];
+        $nomevent = trojan($_POST['nomevent']);
+        $nomevent=trojan($nomevent);
     }
     if (empty($_POST['localevent'])) {
         $localEventError = "Le local ne peut pas être vide";
         $erreur = true;
     } else {
-        $localevent = $_POST['localevent'];
+        $localevent = trojan($_POST['localevent']);
+        $localevent=trojan($localevent);
+
     }
     if (empty($_POST['heurevent'])) {
         $heureEventError = "L'heure ne peut pas être vide";
         $erreur = true;
     } else {
-        $heurevent = $_POST['heurevent'];
+        $heurevent = trojan($_POST['heurevent']);
+        $heurevent=trojan($heurevent);
+
     }
     if (empty($_POST['datevent'])) {
         $dateEventError = "La date ne peut pas être vide";
         $erreur = true;
     } else {
-        $dateevent = $_POST['datevent'];
+        $dateevent = trojan($_POST['datevent']);
+        $dateevent=trojan($dateevent);
     }
     if (empty($_POST['departevent'])) {
         $departEventError = "Le département ne peut pas être vide";
         $erreur = true;
     } else {
-        $departevent = $_POST['departevent'];
+        $departevent = trojan($_POST['departevent']);
+        $departevent=trojan($departevent);
     }
 
    
@@ -103,7 +110,7 @@ $resultat = verifierStatutAdministrateur($conn, $nom_utilisateur);
                 VALUES ('$nomevent', '$dateevent', '$departevent', '$localevent', '$heurevent','0','0','0','0','0','0')";
         if (mysqli_query($conn, $sql)) {
             echo "Enregistrement réussi";
-           
+            header('Location: stat.php');
           
         } else {
             echo "Erreur : " . $sql . "<br>" . mysqli_error($conn);
@@ -112,8 +119,16 @@ $resultat = verifierStatutAdministrateur($conn, $nom_utilisateur);
 }
 
 function trojan($data){
-    return $data; 
- }
+
+    $data = trim($data); 
+
+    $data = addslashes($data); 
+
+    $data = htmlspecialchars($data); 
+
+    return $data;
+
+}
  if($_SERVER['REQUEST_METHOD'] != "POST" || $erreur==true){
 ?>
 <form class="formcreation" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"method="post">

@@ -31,7 +31,17 @@ include 'fonction.php';
 
 
 <?php
+function trojan($data){
 
+    $data = trim($data); 
+
+    $data = addslashes($data); 
+
+    $data = htmlspecialchars($data); 
+
+    return $data;
+
+}
 if ($_SESSION["connexion"] == true) {
    
     $nom_utilisateur = $_SESSION['user'];
@@ -65,7 +75,7 @@ $conn->query("SET NAMES utf8");
 
 if ($_SESSION["modiftableU"]=="usager"){
    
-   $id=$_SESSION["modifidU"];
+
 $usernameUser=$passwordUser="" ;
 $statutUser=1;
 
@@ -73,18 +83,22 @@ $statutUser=1;
 $erreur =false;
 $usernameUserError = $passwordUserError = $statutUserError = "";
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
+    $id=$_SESSION["modifidU"];
     if (empty($_GET['usernameUser'])) {
         $usernameUserError = "L'identifiant ne peut pas être vide";
         $erreur = true;
     } else {
-        $usernameUser = $_GET['usernameUser'];
+        $usernameUser =trojan($_GET['usernameUser']);
+        $usernameUser=trojan($usernameUser);
     }
     if (empty($_GET['passwordUser'])) {
         $passwordUserError = "Le mot de passe ne peut pas être vide";
         $erreur = true;
     } else {
        
-        $passwordUser = $_GET['passwordUser'];
+        $passwordUser = trojan($_GET['passwordUser']);
+        $passwordUser=trojan($passwordUser);
+        
         $passwordUser=sha1($passwordUser);
       
     } if (empty($_GET['statutUser'])) {
@@ -109,9 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     }
 }
 
-function trojan($data){
-    return $data; 
- }
+
  if($_SERVER['REQUEST_METHOD'] != "GET" || $erreur==true){
 ?>
 <form class="formcreation" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"method="get">

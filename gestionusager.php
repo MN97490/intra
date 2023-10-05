@@ -51,7 +51,7 @@ if ($_SESSION["connexion"] == true) {
 
 include 'log.php';
 $table = "usager";
-$_SESSION["modifidU"]="";
+$_SESSION["modifidU"]=null;
 $_SESSION["modiftableU"]="";
 
 $conn = new mysqli($servername, $usernameDB, $passwordDB, $dbname);
@@ -63,7 +63,15 @@ $conn->query("SET NAMES utf8");
 
 $nom_utilisateur = $_SESSION['user'];
 $resultat = verifierStatutAdministrateur($conn, $nom_utilisateur);
+if ($_SERVER['REQUEST_METHOD'] == "GET") {
+    if (empty($_GET['id'])) {
 
+  
+    }
+    else{
+        $_SESSION["modifidU"]=$_GET['id'];
+    }
+    }
 $sql = "SELECT id,user,password,administrateur FROM usager ";
 $result = $conn->query($sql);
 
@@ -95,9 +103,9 @@ if ($result->num_rows > 0) {
                         </form>
                        
                         <form method="get" action="modif.php">
-                            <input type="hidden" name="id" value="<?php echo $row["id"] ; $_SESSION["modifidU"]= $row["id"]; ?>">
+                            <input type="hidden" name="id" value="<?php echo $row["id"] ;  ?>">
                             <input type="hidden" name="table" value="<?php echo $table ;$_SESSION["modiftableU"]=$table; ?>">
-                            <input type="hidden" name="verif" value="<?php $_SESSION["verifDirectionU"]=true; ?>">
+                            <input type="hidden" name="verif" value="<?php echo $_SESSION["verifDirectionU"]=true; ?>">
                             <button type="submit" name="modifBtn" class="modifBtn">Modifier</button>
                         </form>
                    

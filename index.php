@@ -47,10 +47,16 @@ if ($_SESSION["connexion"] == true) {
  include 'log.php';
 
 ?>
-    <h1 class="bienvenue">bienvenue sur la page index</h1>
-  <div class="divimageindex"><img class="imgcegepindex" src=img/logocegep.jpg></div>
+   
 
-
+<script>
+   
+    window.addEventListener('load', function () {
+        var textElement = document.querySelector('.fadeIn');
+        textElement.classList.add('appear');
+    });
+</script>
+<div class="fadeIn">Bienvenue sur la gestion d'evenement des stages</div>
 <div class="footer">
     <div class="footerContent">
         <img src="img/logocegep.jpg" class="logocegepFooter" alt="logocegep">

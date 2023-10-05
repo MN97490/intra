@@ -56,7 +56,8 @@ include 'fonction.php';
 
 if ($_SESSION["connexion"] == true) {
    
- 
+  $nom_utilisateur = $_SESSION['user'];
+  $resultat = verifierStatutAdministrateur($conn, $nom_utilisateur);
 
  } else {
     echo "La connexion n'est pas établie";
@@ -72,7 +73,16 @@ if ($_SESSION["connexion"] == true) {
 
 
 
+ if ($_SERVER['REQUEST_METHOD'] == "GET") {
+  if (empty($_GET['id'])) {
 
+
+  }
+  else{
+    
+      $_SESSION["modifidE"]=$_GET['id'];
+  }
+  }
 
 
  $sql = "SELECT id,nom,date,departement,heureuxEleve,moyenHeureuxEleve,pasHeureuxEleve,heureuxEntreprise,moyenHeureuxEntreprise,pasHeureuxEntreprise,lieu,heure FROM evenement";
@@ -127,7 +137,7 @@ if ($_SESSION["connexion"] == true) {
                         </form>
                        
                         <form method="get" action="modif.php">
-                            <input type="hidden" name="id" value="<?php echo $row["id"] ; $_SESSION["modifidE"]= $row["id"]; ?>">
+                            <input type="hidden" name="id" value="<?php echo $row["id"] ; ?>">
                             <input type="hidden" name="table" value="<?php echo $table ;$_SESSION["modiftableE"]=$table; ?>">
                             <input type="hidden" name="verif" value="<?php $_SESSION["verifDirectionE"]=true; ?>">
                             <button type="submit" name="modifBtn" class="modifBtn">Modifier</button>

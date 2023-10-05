@@ -39,7 +39,17 @@ if ($conn->connect_error) {
 
 $conn->query("SET NAMES utf8");
 
+function trojan($data){
 
+    $data = trim($data); 
+
+    $data = addslashes($data); 
+
+    $data = htmlspecialchars($data); 
+
+    return $data;
+
+}
  if($_SESSION["verifDirectionU"]==true){
     
 
@@ -49,19 +59,30 @@ $conn->query("SET NAMES utf8");
 
 if ($_SESSION["modiftableU"]=="usager"){
  
-   $id=$_SESSION["modifidU"];
+
+
 $usernameUser=$passwordUser="" ;
 $statutUser=0;
 $erreur =false;
 $usernameUserError = $passwordUserError = $statutUserError = "";
 if ($_SERVER['REQUEST_METHOD'] == "GET" ) {
-    $_SESSION["modifidU"]=$_GET{'id'};
+    if (isset($_GET['id']) && !empty($_GET['id'])) {
+        $_SESSION["modifidU"] = $_GET['id'];
+      
+    } else {
+       
+        $_SESSION["modifidU"] = $_GET['ide']; 
+     
+    }
+
+
     if (empty($_GET['usernameUser']) ) {
         
         $usernameUserError = "L'idenfiant ne peut pas être vide";
         $erreur = true;
     } else {
-        $usernameUser = $_GET['usernameUser'];
+        $usernameUser = trojan($_GET['usernameUser']);
+        $usernameUser=trojan( $usernameUser);
     }
     if (empty($_GET['passwordUser'])) {
         $passwordUserError = "Le mot de passe ne peut pas être vide";
@@ -69,6 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" ) {
     } else {
        
         $passwordUser = $_GET['passwordUser'];
+        $passwordUser=trojan($passwordUser);
         $passwordUser=sha1($passwordUser);
        
     }
@@ -81,11 +103,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" ) {
     }
     
        
-   
+}
 
    
     if (!$erreur) {
-        $sql ="UPDATE usager SET user='$usernameUser' ,  password='$passwordUser', administrateur='$statutUser' WHERE id=$id ";
+        $ide = $_SESSION["modifidU"];
+        $sql ="UPDATE usager SET user='$usernameUser' ,  password='$passwordUser', administrateur='$statutUser' WHERE id='$ide' ";
 
         header('Location: gestionusager.php');
         if (mysqli_query($conn, $sql)) {
@@ -98,9 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" ) {
     }
 }
 
-function trojan($data){
-    return $data; 
- }
+
  if($_SERVER['REQUEST_METHOD'] != "GET" || $erreur==true){
 ?>
 <form class="formcreation" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"method="get">
@@ -112,7 +133,7 @@ function trojan($data){
     <p style="color:red;"><?php echo $passwordUserError;?></p>
     <label style="color:black;">Utilisateur Administrateur</label>
     <input type="checkbox" id="statutUser" name="statutUser" value="<?php echo $statutUser ; ?>"><br>
- 
+    <input type="hidden" name="ide" value="<?php  $ide=$_SESSION["modifidU"]; echo $ide;  ?>">
    
     <input type="submit" name="modifBTNU" value="Modifier">
     
@@ -121,7 +142,7 @@ function trojan($data){
 
 }
 } 
-}
+
   else  if($_SESSION["verifDirectionE"]==true){
     
  
@@ -139,21 +160,32 @@ function trojan($data){
         $erreur =false;
         $nomEventError = $localEventError = $heureEventError = $dateEventError =$departEventError =$heureuxEleveErreur=$moyenHeureuxEleveErreur=$pasHeureuxEleveErreur=$heureuxEntrepriseErreur=$moyenHeureuxEntrepriseErreur=$pasHeureuxEntrepriseErreur= "";
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
-
-            $_SESSION["modifidE"]=$_GET{'id'};
+            if (isset($_GET['id']) && !empty($_GET['id'])) {
+                $_SESSION["modifidE"] = $_GET['id'];
+              
+            } else {
+               
+                $_SESSION["modifidE"] = $_GET['ideV']; 
+             
+            }
+        
+          
             if (empty($_GET['nomevent'])) {
                  $nomEventError = "Le nom de l`evenement ne peut pas être vide";
                 $erreur = true;
             } else {
-                $nomevent = $_GET['nomevent'];
+                $nomevent = trojan($_GET['nomevent']);
+                $nomevent=trojan($nomevent);
+              
             }
             if (empty($_GET['localevent'])) {
                 $localEventError= "Le local ne peut pas être vide";
                 $erreur = true;
             } else {
                
-                $localevent = $_GET['localevent'];
+                $localevent = trojan($_GET['localevent']);
               
+                $localevent=trojan($localevent);
                
             }
             if (empty($_GET['heurevent'])) {
@@ -161,7 +193,8 @@ function trojan($data){
                 $erreur = true;
             } else {
 
-                $heurevent = $_GET['heurevent'];
+                $heurevent = trojan($_GET['heurevent']);
+                $heurevent=trojan($heurevent);
 
             }
             if (empty($_GET['datevent'])) {
@@ -169,7 +202,9 @@ function trojan($data){
                 $erreur = true;
             } else {
 
-                $datevent = $_GET['datevent'];
+                $datevent = trojan($_GET['datevent']);
+                $datevent=trojan($datevent);
+
 
             }
             if (empty($_GET['departevent'])) {
@@ -177,7 +212,8 @@ function trojan($data){
                 $erreur = true;
             } else {
 
-                $departevent = $_GET['departevent'];
+                $departevent = trojan($_GET['departevent']);
+                $departevent=trojan($departevent);
 
             }
             if (empty($_GET['heureuxEleve'])) {
@@ -185,7 +221,9 @@ function trojan($data){
                 $erreur = true;
             } else {
 
-                $heureuxEleve = $_GET['heureuxEleve'];
+                $heureuxEleve = trojan($_GET['heureuxEleve']);
+                $heureuxEleve=trojan($heureuxEleve);
+
 
             }
             if (empty($_GET['moyenHeureuxEleve'])) {
@@ -193,23 +231,18 @@ function trojan($data){
                 $erreur = true;
             } else {
 
-                $moyenHeureuxEleve = $_GET['moyenHeureuxEleve'];
+                $moyenHeureuxEleve = trojan($_GET['moyenHeureuxEleve']);
+                $moyenHeureuxEleve=trojan($moyenHeureuxEleve);
 
             }
-            if (empty($_GET['moyenHeureuxEleve'])) {
-                $moyenHeureuxEleveErreur="La nombre d'eleve neutre de l'evenement ne peut pas être vide ";
-                $erreur = true;
-            } else {
-
-                $moyenHeureuxEleve = $_GET['moyenHeureuxEleve'];
-
-            }
+           
             if (empty($_GET['pasHeureuxEleve'])) {
                 $pasHeureuxEleveErreur="La nombre d'eleve mécontent de l'evenement ne peut pas être vide ";
                 $erreur = true;
             } else {
 
-                $pasHeureuxEleve = $_GET['pasHeureuxEleve'];
+                $pasHeureuxEleve = trojan($_GET['pasHeureuxEleve']);
+                $pasHeureuxEleve=trojan($pasHeureuxEleve);
 
             }
             if (empty($_GET['heureuxEntreprise'])) {
@@ -217,7 +250,8 @@ function trojan($data){
                 $erreur = true;
             } else {
 
-                $heureuxEntreprise = $_GET['heureuxEntreprise'];
+                $heureuxEntreprise = trojan($_GET['heureuxEntreprise']);
+                $heureuxEntreprise=trojan($heureuxEntreprise);
 
             }
             if (empty($_GET['moyenHeureuxEntreprise'])) {
@@ -225,7 +259,8 @@ function trojan($data){
                 $erreur = true;
             } else {
 
-                $moyenHeureuxEntreprise = $_GET['moyenHeureuxEntreprise'];
+                $moyenHeureuxEntreprise = trojan($_GET['moyenHeureuxEntreprise']);
+                $moyenHeureuxEntreprise=trojan($moyenHeureuxEntreprise);
 
             }
             if (empty($_GET['pasHeureuxEntreprise'])) {
@@ -233,10 +268,10 @@ function trojan($data){
                 $erreur = true;
             } else {
 
-                $pasHeureuxEntreprise = $_GET['pasHeureuxEntreprise'];
+                $pasHeureuxEntreprise = trojan($_GET['pasHeureuxEntreprise']);
+                $pasHeureuxEntreprise=trojan($pasHeureuxEntreprise);
 
-            }
-            
+        
         
         
         
@@ -246,7 +281,8 @@ function trojan($data){
         
            
             if (!$erreur) {
-                $sql ="UPDATE evenement SET nom='$nomevent' ,  lieu='$localevent', Heure='$heurevent', date='$datevent', departement='$departevent' ,heureuxEleve='$heureuxEleve',moyenHeureuxEleve='$moyenHeureuxEleve',pasHeureuxEleve='$pasHeureuxEleve',heureuxEntreprise='$heureuxEntreprise',moyenHeureuxEntreprise='$moyenHeureuxEntreprise',pasHeureuxEntreprise='$pasHeureuxEntreprise'  WHERE id='$id' ";
+                $ideV = $_SESSION["modifidE"];
+                $sql ="UPDATE evenement SET nom='$nomevent' ,  lieu='$localevent', Heure='$heurevent', date='$datevent', departement='$departevent' ,heureuxEleve='$heureuxEleve',moyenHeureuxEleve='$moyenHeureuxEleve',pasHeureuxEleve='$pasHeureuxEleve',heureuxEntreprise='$heureuxEntreprise',moyenHeureuxEntreprise='$moyenHeureuxEntreprise',pasHeureuxEntreprise='$pasHeureuxEntreprise'  WHERE id='$ideV' ";
         
                header('Location: stat.php');
                 if (mysqli_query($conn, $sql)) {
@@ -263,7 +299,7 @@ function trojan($data){
          if($_SERVER['REQUEST_METHOD'] != "GET" || $erreur==true){
             ?>
             <form class="formcreation" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"method="get">
-            <input type="hidden" name="id" value="<?php echo $id;  ?>">
+            <input type="hidden" name="ideV" value="<?php $ideV=$_SESSION["modifidE"]; echo $ideV;  ?>">
                 <label style="color:black;">nom de l'evenement:</label>
                 <input type="text" id="nomevent" name="nomevent" value = "<?php echo $nomevent;?>"><br>
                 <p style="color:red;"><?php echo $nomEventError;?></p>
@@ -313,7 +349,7 @@ function trojan($data){
 else {
     header('Location: index.php');
 
-}
+}}
 ?>
 
 

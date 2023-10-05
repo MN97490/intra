@@ -56,14 +56,14 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
         $erreur = true;
     } else {
        
-        $user = $_POST['username'];
+        $user = trojan($_POST['username']);
         $user=trojan($user);
     }
     if (empty($_POST['password'])) {
         $PasswordError = "Le mot de passe  ne peut pas être vide";
         $erreur = true;
     } else {
-        $password= $_POST['password'];
+        $password= trojan($_POST['password']);
         $password=trojan ($password);
         $password = sha1($password,false);
     }
