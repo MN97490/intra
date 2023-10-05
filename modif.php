@@ -2,6 +2,7 @@
 session_start();
 
 include 'fonction.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,20 +14,7 @@ include 'fonction.php';
     <link rel="shortcut icon" type="image/png" href="img\apple-icon-72x72.png"/>
 </head>
 <body class="bodyStat">
-<nav id='menu'>
-  <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
-  <ul>
-    <li><a href='http://localhost/intra/index.php'>Accueil</a></li>
-    <li><a href='http://localhost/intra/creation.php'>Création</a></li>
-    <li><a href='http://localhost/intra/stat.php'>Statistiques</a></li>
-    <li><a href='http://localhost/intra/choixvote.php'>Vote</a></li>
-    <li><a  href='http://localhost/intra/recap.php'>Récapitulatif</a>
-    </li>
-    <li><a href='http://localhost/intra/gestionusager.php'>Gestion Usager</a></li>
-    <li><a class="decoContent" href='http://localhost/intra/deco.php'> <?php echo$_SESSION['user']?>  <img src="img\se-deconnecter.png"  class="decoIcon"alt="Deco"> </a></li>
-   
-  </ul>
-</nav>
+
 
 <?php 
 if ($_SESSION["connexion"] == true) {
@@ -60,14 +48,16 @@ $conn->query("SET NAMES utf8");
 
 
 if ($_SESSION["modiftableU"]=="usager"){
-   
+ 
    $id=$_SESSION["modifidU"];
 $usernameUser=$passwordUser="" ;
-$statutUser=1;
+$statutUser=0;
 $erreur =false;
 $usernameUserError = $passwordUserError = $statutUserError = "";
-if ($_SERVER['REQUEST_METHOD'] == "GET") {
-    if (empty($_GET['usernameUser'])) {
+if ($_SERVER['REQUEST_METHOD'] == "GET" ) {
+    $_SESSION["modifidU"]=$_GET{'id'};
+    if (empty($_GET['usernameUser']) ) {
+        
         $usernameUserError = "L'idenfiant ne peut pas être vide";
         $erreur = true;
     } else {
@@ -82,10 +72,14 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         $passwordUser=sha1($passwordUser);
        
     }
-    if (empty($_GET['statutUser'])) {
-        $statutUser=0;
-    } 
-
+    if (isset($_GET['statutUser'])) {
+       
+        $statutUser = 1;
+    } else {
+      
+        $statutUser = 0;
+    }
+    
        
    
 
@@ -120,7 +114,7 @@ function trojan($data){
     <input type="checkbox" id="statutUser" name="statutUser" value="<?php echo $statutUser ; ?>"><br>
  
    
-    <input type="submit" value="Creation">
+    <input type="submit" name="modifBTNU" value="Modifier">
     
 </form>
 <?php
@@ -130,20 +124,23 @@ function trojan($data){
 }
   else  if($_SESSION["verifDirectionE"]==true){
     
-
+ 
 
 
 
 
         if ($_SESSION["modiftableE"]=="evenement"){
+          
+            $id=$_SESSION["modifidE"];
            
-           $id=$_SESSION["modifidE"];
            $nomevent=$localevent=$heurevent=$datevent=$departevent ="" ;
            $heureuxEleve=$moyenHeureuxEleve=$pasHeureuxEleve=$heureuxEntreprise=$moyenHeureuxEntreprise=$pasHeureuxEntreprise="";
             
         $erreur =false;
         $nomEventError = $localEventError = $heureEventError = $dateEventError =$departEventError =$heureuxEleveErreur=$moyenHeureuxEleveErreur=$pasHeureuxEleveErreur=$heureuxEntrepriseErreur=$moyenHeureuxEntrepriseErreur=$pasHeureuxEntrepriseErreur= "";
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
+
+            $_SESSION["modifidE"]=$_GET{'id'};
             if (empty($_GET['nomevent'])) {
                  $nomEventError = "Le nom de l`evenement ne peut pas être vide";
                 $erreur = true;
@@ -151,7 +148,7 @@ function trojan($data){
                 $nomevent = $_GET['nomevent'];
             }
             if (empty($_GET['localevent'])) {
-                $localEventError= "Le mot de passe ne peut pas être vide";
+                $localEventError= "Le local ne peut pas être vide";
                 $erreur = true;
             } else {
                
@@ -249,7 +246,7 @@ function trojan($data){
         
            
             if (!$erreur) {
-                $sql ="UPDATE evenement SET nom='$nomevent' ,  lieu='$localevent', Heure='$heurevent', date='$datevent', departement='$departevent' ,heureuxEleve='$heureuxEleve',moyenHeureuxEleve='$moyenHeureuxEleve',pasHeureuxEleve='$pasHeureuxEleve',heureuxEntreprise='$heureuxEntreprise',moyenHeureuxEntreprise='$moyenHeureuxEntreprise',pasHeureuxEntreprise='$pasHeureuxEntreprise'  WHERE id=$id ";
+                $sql ="UPDATE evenement SET nom='$nomevent' ,  lieu='$localevent', Heure='$heurevent', date='$datevent', departement='$departevent' ,heureuxEleve='$heureuxEleve',moyenHeureuxEleve='$moyenHeureuxEleve',pasHeureuxEleve='$pasHeureuxEleve',heureuxEntreprise='$heureuxEntreprise',moyenHeureuxEntreprise='$moyenHeureuxEntreprise',pasHeureuxEntreprise='$pasHeureuxEntreprise'  WHERE id='$id' ";
         
                header('Location: stat.php');
                 if (mysqli_query($conn, $sql)) {
@@ -266,6 +263,7 @@ function trojan($data){
          if($_SERVER['REQUEST_METHOD'] != "GET" || $erreur==true){
             ?>
             <form class="formcreation" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"method="get">
+            <input type="hidden" name="id" value="<?php echo $id;  ?>">
                 <label style="color:black;">nom de l'evenement:</label>
                 <input type="text" id="nomevent" name="nomevent" value = "<?php echo $nomevent;?>"><br>
                 <p style="color:red;"><?php echo $nomEventError;?></p>
@@ -300,7 +298,7 @@ function trojan($data){
                 <input type="text" id="pasHeureuxEntreprise" name="pasHeureuxEntreprise" value = "<?php echo $pasHeureuxEntreprise;?>"><br>
                 <p style="color:red;"><?php echo $pasHeureuxEntrepriseErreur;?></p>
                 
-                <input type="submit" value="Creation">
+                <input type="submit" value="Modification">
                 
             </form>
         <?php
@@ -318,10 +316,6 @@ else {
 }
 ?>
 
-<div class="footer">
-    <div class="footerContent">
-        <img src="img/logocegep.jpg" class="logocegepFooter" alt="logocegep">
-        <p>© Tous droits réservés - Cégep de Trois-Rivières - 2023</p>
-    </div>
+
 </body>
 </html>

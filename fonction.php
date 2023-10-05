@@ -20,6 +20,7 @@ if($conn->connect_error){
 }
 
 $conn->query("SET NAMES utf8");
+
 function verifierStatutAdministrateur($conn, $nom_utilisateur) {
     // Vérifie si l'utilisateur a le statut d'administrateur
     $sql = "SELECT administrateur FROM usager WHERE user = '$nom_utilisateur'";

@@ -18,8 +18,23 @@ include 'fonction.php';
     <title>Vote eleve</title>
     <link rel="shortcut icon" type="image/png" href="img\apple-icon-72x72.png"/>
    
+   
 </head>
 <body class="bodyVote" >
+<nav id='menu'>
+  <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+  <ul>
+    <li><a href='index.php'>Accueil</a></li>
+    <li><a href='creation.php'>Création</a></li>
+    <li><a href='stat.php'>Statistiques</a></li>
+    <li><a href='choixvote.php'>Vote</a></li>
+    <li><a  href='recap.php'>Récapitulatif</a>
+    </li>
+    <li><a href='gestionusager.php'>Gestion Usager</a></li>
+    <li><a class="decoContent" href='deco.php'> <?php echo$_SESSION['user']?>  <img src="img\se-deconnecter.png"  class="decoIcon"alt="Deco"> </a></li>
+   
+  </ul>
+</nav>
 
 <?php
 // Set session variables

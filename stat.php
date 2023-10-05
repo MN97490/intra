@@ -2,6 +2,7 @@
 session_start();
 $_SESSION['verifDirectionU']=false;
 $_SESSION['verifDirectionE']=false;
+include 'log.php';
 include 'fonction.php';
 ?>
 <!DOCTYPE html>
@@ -17,7 +18,7 @@ include 'fonction.php';
 <body class="bodyStat">
     
     <?php 
-    include 'log.php';
+  
      $_SESSION["modifidE"]="";
      $_SESSION["modiftableE"]="";
      $table = "evenement";
@@ -125,7 +126,7 @@ if ($_SESSION["connexion"] == true) {
                             <button type="submit" name="deleteButton" class="deleteButton">Supprimer</button>
                         </form>
                        
-                        <form method="post" action="modif.php">
+                        <form method="get" action="modif.php">
                             <input type="hidden" name="id" value="<?php echo $row["id"] ; $_SESSION["modifidE"]= $row["id"]; ?>">
                             <input type="hidden" name="table" value="<?php echo $table ;$_SESSION["modiftableE"]=$table; ?>">
                             <input type="hidden" name="verif" value="<?php $_SESSION["verifDirectionE"]=true; ?>">

@@ -94,7 +94,7 @@ if ($result->num_rows > 0) {
                             <button type="submit" name="deleteButton" class="deleteButton">Supprimer</button>
                         </form>
                        
-                        <form method="post" action="modif.php">
+                        <form method="get" action="modif.php">
                             <input type="hidden" name="id" value="<?php echo $row["id"] ; $_SESSION["modifidU"]= $row["id"]; ?>">
                             <input type="hidden" name="table" value="<?php echo $table ;$_SESSION["modiftableU"]=$table; ?>">
                             <input type="hidden" name="verif" value="<?php $_SESSION["verifDirectionU"]=true; ?>">

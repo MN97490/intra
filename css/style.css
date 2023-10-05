@@ -27,17 +27,33 @@
 }
 
 
- .formulaireCo {
-    border: 1px solid white;
-    width: 300px;
-    max-width: 80%; 
-    padding: 20px; 
+.formulaireCo {
+   border: 1px solid white;
+   width: 300px;
+   max-width: 80%;
+   padding: 20px;
    text-align: center;
    background-color: rgba(9, 45, 116, 0.7);
-   
- }
+}
 
+.formulaireCo label {
+   display: inline-block; 
+   text-align: right; 
+   width: 35%; 
+   margin-right: 10px; 
+   font-weight: bold; 
+}
 
+.formulaireCo input[type="text"],
+.formulaireCo input[type="password"] {
+   width: 50%; 
+   padding: 5px;
+   margin-bottom: 10px;
+}
+
+.formulaireCo input[type="submit"] {
+   width: auto; 
+}
 .LienIndex{
    margin: auto;
    width: 200px;
@@ -422,3 +438,16 @@ justify-items: center;
    align-items: center;
    height: 100vh; 
  }
+
+.ajoutBtn {
+   background-color: green; 
+   color: #fff; 
+   padding: 10px 20px; 
+   border: none; 
+   border-radius: 5px; 
+
+   font-size: 16px; 
+}
+
+
+

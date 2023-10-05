@@ -17,6 +17,7 @@ include 'fonction.php';
     <title>creation</title>
     <link rel="shortcut icon" type="image/png" href="img\apple-icon-72x72.png"/>
     
+    
 </head>
 <body class="bodycreation">
   
@@ -34,6 +35,7 @@ include 'fonction.php';
    
   </ul>
 </nav>
+
 
 <?php
 
@@ -97,8 +99,8 @@ $resultat = verifierStatutAdministrateur($conn, $nom_utilisateur);
 
    
     if (!$erreur) {
-        $sql = "INSERT INTO evenement (nom, date, departement, lieu, heure)
-                VALUES ('$nomevent', '$dateevent', '$departevent', '$localevent', '$heurevent')";
+        $sql = "INSERT INTO evenement (nom, date, departement, lieu, heure,heureuxEleve,moyenHeureuxEleve,pasHeureuxEleve,heureuxEntreprise,moyenHeureuxEntreprise,pasHeureuxEntreprise)
+                VALUES ('$nomevent', '$dateevent', '$departevent', '$localevent', '$heurevent','0','0','0','0','0','0')";
         if (mysqli_query($conn, $sql)) {
             echo "Enregistrement réussi";
            

@@ -4,17 +4,7 @@ session_start( );
 unset($_SESSION['verifDirectionU']);
 unset($_SESSION['verifDirectionE']);
 unset($_SESSION["connexion"]);
-function trojan($data){
 
-    $data = trim($data); 
-
-    $data = addslashes($data); 
-
-    $data = htmlspecialchars($data); 
-
-    return $data;
-
-}
 
 ?>
 <!DOCTYPE html> 
@@ -37,41 +27,68 @@ function trojan($data){
 </video>
 
 <?php
-if ($_SERVER["REQUEST_METHOD"]=="POST"){
-    $user = $_POST['username'];
-    $password= $_POST['password'];
+function trojan($data){
 
-   $user=trojan($user);
-   $password=trojan ($password);
+    $data = trim($data); 
 
-    $password = sha1($password,false);
-    echo $password;
-    $_SESSION['user'] = $user; 
-    $_SESSION["verifDirectionU"]=false;
-    $_SESSION["verifDirectionE"]=false;
-    // verifier si l'usager est dans la bd , activer la session
+    $data = addslashes($data); 
+
+    $data = htmlspecialchars($data); 
+
+    return $data;
+
+}
  include 'log.php';
 
-    //creez la connection
-    $conn = new mysqli($servername,$usernameDB,$passwordDB,$dbname);
-    //check la co
-    if ($conn-> connect_error){
-        die ("Connection failed:". $conn->connect_error);
+ //creez la connection
+ $conn = new mysqli($servername,$usernameDB,$passwordDB,$dbname);
+ //check la co
+ if ($conn-> connect_error){
+     die ("Connection failed:". $conn->connect_error);
+ }
+ $UsernameError="";
+ $PasswordError="";
+ $erreur=false;
+if ($_SERVER["REQUEST_METHOD"]=="POST"){
+
+    if (empty($_POST['username'])) {
+        $UsernameError = "L'identifiant ne peut pas être vide";
+        $erreur = true;
+    } else {
+       
+        $user = $_POST['username'];
+        $user=trojan($user);
     }
-$sql = "SELECT * FROM usager where user='$user' and password='$password' ";
+    if (empty($_POST['password'])) {
+        $PasswordError = "Le mot de passe  ne peut pas être vide";
+        $erreur = true;
+    } else {
+        $password= $_POST['password'];
+        $password=trojan ($password);
+        $password = sha1($password,false);
+    }
 
-$result = $conn->query($sql);
 
+
+
+
+if (!$erreur) {
+    $sql = "SELECT * FROM usager where user='$user' and password='$password' ";
+    $result = $conn->query($sql);
 if ($result->num_rows >0){
     $row = $result->fetch_assoc();
     echo "<h1>Connecté</h1>";
     $_SESSION ["connexion"] = true;
+    $_SESSION['user'] = $user; 
+    $_SESSION["verifDirectionU"]=false;
+    $_SESSION["verifDirectionE"]=false;
     header('Location: index.php');
 }
 else {
-    echo "<h2> Nom d'usager ou mot de passe invalide </h2>";
-    header('Location: connect.php');
-}
+  
+    $UsernameError="Nom d'usager ou mot de passe invalide";
+    $PasswordError="Nom d'usager ou mot de passe invalide";
+} }
 $conn->close();
 
 }
@@ -84,10 +101,12 @@ $conn->close();
             <div class="formulaireCo" >
             
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"method="post">
-                username: <input type="text" name="username" value = "" placeholder="username" ><br>
-                <p style="color:red;"></p>
-                password: <input type="password" name="password" value = "" placeholder="mot de passe"><br>
-                <p style="color:red;"></p>
+                <label for="username">Utilisateur:</label>
+                <input type="text" name="username" value = "" placeholder=" Utilisateur" ><br>
+                <p style="color:red;"><?php echo $UsernameError;?></p>
+                <label for="password">Mot de Passe:</label>
+                 <input type="password" name="password" value = "" placeholder="Mot de Passe"><br>
+                 <p style="color:red;"><?php echo $PasswordError;?></p>
 
                 <input type="submit" value="Connexion" >
                 </form> 
