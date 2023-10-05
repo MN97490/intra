@@ -439,6 +439,7 @@ justify-items: center;
    height: 100vh; 
  }
 
+
 .ajoutBtn {
    background-color: green; 
    color: #fff; 
@@ -450,4 +451,18 @@ justify-items: center;
 }
 
 
+
+
+.imgcegepindex{
+   max-width: 300px;
+   max-height: 300px;
+}
+.divimageindex{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: auto;
+   width: auto;
+   padding: 5%;
+}
 
